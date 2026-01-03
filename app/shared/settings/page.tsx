@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
@@ -10,10 +10,10 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { currentUser } from "@/lib/mock-data"
 import { containerVariants } from "@/lib/motion"
-import { Upload, Shield, Bell, Palette, Globe, User, Check } from "lucide-react"
+import { Upload, Shield, Bell, Palette, Globe, User, Check, Loader2 } from "lucide-react"
 import { toast } from "sonner"
+import { getMyProfile, type UserProfile } from "@/lib/api"
 
 const settingsTabs = [
   { id: "profile", label: "Profile", icon: User },
@@ -25,6 +25,34 @@ const settingsTabs = [
 
 export default function SharedSettingsPage() {
   const [activeTab, setActiveTab] = useState("profile")
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchProfile() {
+      try {
+        const profile = await getMyProfile()
+        setUserProfile(profile)
+      } catch (error) {
+        console.error('Failed to fetch profile:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchProfile()
+  }, [])
+
+  if (isLoading || !userProfile) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </div>
+    )
+  }
+
+  const userName = userProfile.profile
+    ? `${userProfile.profile.first_name} ${userProfile.profile.last_name}`.trim()
+    : userProfile.user.email.split('@')[0]
 
   return (
     <div>
@@ -92,9 +120,9 @@ export default function SharedSettingsPage() {
                     <div className="flex items-center gap-6">
                       <motion.div whileHover={{ scale: 1.05 }} className="relative">
                         <Avatar className="h-24 w-24 ring-4 ring-primary/10 shadow-xl">
-                          <AvatarImage src={currentUser.avatar || "/placeholder.svg"} alt={currentUser.name} />
+                          <AvatarImage src="/placeholder.svg" alt={userName} />
                           <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-2xl font-bold text-white">
-                            {currentUser.name
+                            {userName
                               .split(" ")
                               .map((n) => n[0])
                               .join("")}
@@ -126,7 +154,7 @@ export default function SharedSettingsPage() {
                         </Label>
                         <Input
                           id="firstName"
-                          defaultValue={currentUser.name.split(" ")[0]}
+                          defaultValue={userProfile.profile?.first_name || ''}
                           className="bg-muted/50 border-border/50 focus:bg-background transition-colors"
                         />
                       </div>
@@ -136,7 +164,7 @@ export default function SharedSettingsPage() {
                         </Label>
                         <Input
                           id="lastName"
-                          defaultValue={currentUser.name.split(" ")[1]}
+                          defaultValue={userProfile.profile?.last_name || ''}
                           className="bg-muted/50 border-border/50 focus:bg-background transition-colors"
                         />
                       </div>
@@ -147,7 +175,7 @@ export default function SharedSettingsPage() {
                         <Input
                           id="email"
                           type="email"
-                          defaultValue={currentUser.email}
+                          defaultValue={userProfile.user.email}
                           className="bg-muted/50 border-border/50 focus:bg-background transition-colors"
                         />
                       </div>

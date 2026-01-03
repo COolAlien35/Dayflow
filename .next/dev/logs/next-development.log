@@ -3264,3 +3264,143 @@ Import traces:
 [01:40:27.051] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
 [01:40:57.691] Server  LOG      ✓ Compiled in 1098ms
 [01:41:30.932] Server  LOG      ✓ Compiled in 989ms
+[01:42:59.149] Server  LOG      ✓ Compiled in 759ms
+[01:43:41.474] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:43:42.225] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:43:42.225] Browser WARN    [AnimationController] Animation "mount-a2ohrxqxj" failed validation and will not be registered
+[01:43:42.225] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:43:42.225] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/employee/leave","route":"/employee/leave"}
+[01:43:42.225] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/leave color: rgb(120, 120, 120) color: inherit {"dp":"/employee/leave","o":"http://localhost:3000/employee/leave","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438049240}
+[01:43:53.918] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:43:53.918] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:44:04.351] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:44:04.651] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:44:04.651] Browser WARN    [AnimationController] Animation "mount-ala9dk6mi" failed validation and will not be registered
+[01:44:04.651] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:44:04.651] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/employee/leave","route":"/employee/leave"}
+[01:44:04.651] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/leave color: rgb(120, 120, 120) color: inherit {"dp":"/employee/leave","o":"http://localhost:3000/employee/leave","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438071894}
+[01:44:10.666] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:44:10.667] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:44:19.686] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:44:19.967] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:44:19.967] Browser WARN    [AnimationController] Animation "mount-ngg03icmr" failed validation and will not be registered
+[01:44:19.967] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:44:19.967] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/employee/leave","route":"/employee/leave"}
+[01:44:19.967] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/leave color: rgb(120, 120, 120) color: inherit {"dp":"/employee/leave","o":"http://localhost:3000/employee/leave","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438087206}
+[01:44:27.496] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/payroll color: rgb(120, 120, 120) color: inherit {"dp":"/employee/payroll","o":"http://localhost:3000/employee/payroll","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438094735}
+[01:44:37.539] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/employee/dashboard","o":"http://localhost:3000/employee/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438104781}
+[01:44:46.288] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:44:46.288] Browser WARN    [AnimationController] Animation "mount-ga724gukb" failed validation and will not be registered
+[01:44:46.288] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:44:46.288] Browser WARN    [AnimationController] Animation "mount-kllxf4jtx" failed validation and will not be registered
+[01:44:46.288] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:44:46.288] Browser WARN    [AnimationController] Animation "mount-ga724gukb" failed validation and will not be registered
+[01:44:46.288] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:44:46.288] Browser WARN    [AnimationController] Animation "mount-kllxf4jtx" failed validation and will not be registered
+[01:44:46.288] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/attendance color: rgb(120, 120, 120) color: inherit {"dp":"/employee/attendance","o":"http://localhost:3000/employee/attendance","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438113524}
+[01:44:48.389] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/employee/dashboard","o":"http://localhost:3000/employee/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438115625}
+[01:45:35.649] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/employee/profile color: rgb(120, 120, 120) color: inherit {"dp":"/employee/profile","o":"http://localhost:3000/employee/profile","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438162892}
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-qdkoulgzh" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-bc3y6pq2x" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-wfawhnho0" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-qdkoulgzh" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-bc3y6pq2x" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-wfawhnho0" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-qdkoulgzh" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-bc3y6pq2x" failed validation and will not be registered
+[01:45:41.678] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:45:41.678] Browser WARN    [AnimationController] Animation "mount-wfawhnho0" failed validation and will not be registered
+[01:45:41.678] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438168909}
+[01:50:17.559] Server  LOG      ✓ Compiled in 1073ms
+[01:50:18.492] Server  LOG      ✓ Compiled in 394ms
+[01:50:38.165] Server  LOG      ✓ Compiled in 13.3s
+[01:50:38.783] Server  LOG      ✓ Compiled in 0ms
+[01:50:49.457] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:51:02.094] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:51:02.094] Browser WARN    [AnimationController] Animation "mount-siesd621j" failed validation and will not be registered
+[01:51:02.094] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:51:02.094] Browser WARN    [AnimationController] Animation "mount-wi42kqxdy" failed validation and will not be registered
+[01:51:02.094] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:51:02.094] Browser WARN    [AnimationController] Animation "mount-i27gk8orl" failed validation and will not be registered
+[01:51:02.094] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:51:02.094] Browser WARN    [AnimationController] Animation "mount-siesd621j" failed validation and will not be registered
+[01:51:02.094] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:51:02.094] Browser WARN    [AnimationController] Animation "mount-wi42kqxdy" failed validation and will not be registered
+[01:51:02.094] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:51:02.094] Browser WARN    [AnimationController] Animation "mount-i27gk8orl" failed validation and will not be registered
+[01:51:02.094] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:51:02.094] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:51:02.094] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438489261}
+[01:51:38.587] Server  LOG      ✓ Compiled in 4.3s
+[01:52:57.574] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:52:58.130] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:52:58.138] Browser WARN    [AnimationController] Animation "mount-d1vgk287j" failed validation and will not be registered
+[01:52:58.138] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:52:58.138] Browser WARN    [AnimationController] Animation "mount-z2sxglgdy" failed validation and will not be registered
+[01:52:58.138] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:52:58.138] Browser WARN    [AnimationController] Animation "mount-t20w35w10" failed validation and will not be registered
+[01:52:58.138] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:52:58.138] Browser WARN    [AnimationController] Animation "mount-d1vgk287j" failed validation and will not be registered
+[01:52:58.138] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:52:58.138] Browser WARN    [AnimationController] Animation "mount-z2sxglgdy" failed validation and will not be registered
+[01:52:58.138] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:52:58.143] Browser WARN    [AnimationController] Animation "mount-t20w35w10" failed validation and will not be registered
+[01:52:58.143] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:52:58.143] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:52:58.143] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438605360}
+[01:53:14.698] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:53:15.410] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:53:15.410] Browser WARN    [AnimationController] Animation "mount-ow8hstqp4" failed validation and will not be registered
+[01:53:15.410] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:53:15.410] Browser WARN    [AnimationController] Animation "mount-nv9skg58n" failed validation and will not be registered
+[01:53:15.410] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:53:15.410] Browser WARN    [AnimationController] Animation "mount-uwyge65k8" failed validation and will not be registered
+[01:53:15.410] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:53:15.410] Browser WARN    [AnimationController] Animation "mount-ow8hstqp4" failed validation and will not be registered
+[01:53:15.410] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:53:15.410] Browser WARN    [AnimationController] Animation "mount-nv9skg58n" failed validation and will not be registered
+[01:53:15.410] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:53:15.410] Browser WARN    [AnimationController] Animation "mount-uwyge65k8" failed validation and will not be registered
+[01:53:15.410] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:53:15.410] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:53:15.410] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438622496}
+[01:54:28.067] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:28.304] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:28.304] Browser WARN    [AnimationController] Animation "mount-o95k4db7m" failed validation and will not be registered
+[01:54:28.304] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:28.304] Browser WARN    [AnimationController] Animation "mount-62te4r3s2" failed validation and will not be registered
+[01:54:28.304] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:28.304] Browser WARN    [AnimationController] Animation "mount-uc8pto8g4" failed validation and will not be registered
+[01:54:28.304] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:28.304] Browser WARN    [AnimationController] Animation "mount-o95k4db7m" failed validation and will not be registered
+[01:54:28.304] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:28.304] Browser WARN    [AnimationController] Animation "mount-62te4r3s2" failed validation and will not be registered
+[01:54:28.304] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:28.304] Browser WARN    [AnimationController] Animation "mount-uc8pto8g4" failed validation and will not be registered
+[01:54:28.304] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:54:28.304] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:54:28.304] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438695549}
+[01:54:46.761] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:46.964] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:46.964] Browser WARN    [AnimationController] Animation "mount-x6o4bjuki" failed validation and will not be registered
+[01:54:46.964] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:46.964] Browser WARN    [AnimationController] Animation "mount-5kb7fcstv" failed validation and will not be registered
+[01:54:46.964] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:46.964] Browser WARN    [AnimationController] Animation "mount-7vnmf3d3b" failed validation and will not be registered
+[01:54:46.964] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:46.964] Browser WARN    [AnimationController] Animation "mount-x6o4bjuki" failed validation and will not be registered
+[01:54:46.964] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:46.964] Browser WARN    [AnimationController] Animation "mount-5kb7fcstv" failed validation and will not be registered
+[01:54:46.964] Browser WARN    [Motion System] from opacity 0 is below minimum 0.85
+[01:54:46.964] Browser WARN    [AnimationController] Animation "mount-7vnmf3d3b" failed validation and will not be registered
+[01:54:46.964] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:54:46.964] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:54:46.964] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767438714214}

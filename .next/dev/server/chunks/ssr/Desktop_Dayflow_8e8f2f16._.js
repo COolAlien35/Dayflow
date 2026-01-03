@@ -2213,15 +2213,34 @@ async function apiFetch(endpoint, options = {}) {
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
     }
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers
-    });
+    let response;
+    try {
+        response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            ...options,
+            headers
+        });
+    } catch (error) {
+        // Network error
+        throw new APIError('Network error. Please check your connection.', 0, {
+            networkError: true
+        });
+    }
     if (!response.ok) {
         const errorData = await response.json().catch(()=>({}));
+        // Handle 401 - clear token and redirect to login
+        if (response.status === 401) {
+            clearToken();
+            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+            ;
+        }
         throw new APIError(errorData.message || errorData.detail || `API Error: ${response.status}`, response.status, errorData);
     }
-    return response.json();
+    // Handle empty responses (204 No Content)
+    const text = await response.text();
+    if (!text) {
+        return {};
+    }
+    return JSON.parse(text);
 }
 class APIError extends Error {
     status;

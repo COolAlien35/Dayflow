@@ -441,6 +441,176 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/Desktop/Dayflow/components/layout/note-block.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "NoteBlock",
+    ()=>NoteBlock,
+    "NoteBlockDescription",
+    ()=>NoteBlockDescription,
+    "NoteBlockTitle",
+    ()=>NoteBlockTitle,
+    "noteBlockTextColors",
+    ()=>noteBlockTextColors
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+/**
+ * NoteBlock Component
+ * 
+ * A reusable component for displaying note blocks, info panels, and alert boxes
+ * with consistent animations across the application.
+ * 
+ * Requirements:
+ * - 12.1: Note block animation (scale:0.98, opacity:0.9 → scale:1, opacity:1)
+ * - 12.2: Note block animation consistency across all pages
+ * - 12.3: Hover effect (increase box-shadow depth)
+ * 
+ * Usage:
+ * ```tsx
+ * <NoteBlock variant="info" icon={<InfoIcon />}>
+ *   <NoteBlockTitle>Important Information</NoteBlockTitle>
+ *   <NoteBlockDescription>
+ *     This is some important information that users should know.
+ *   </NoteBlockDescription>
+ * </NoteBlock>
+ * ```
+ */ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/class-variance-authority/dist/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/utils.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/hooks.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$globalNoteAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/animations/globalNoteAnimations.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+;
+;
+;
+const noteBlockVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cva"])('note-block flex items-start gap-3 rounded-xl border p-4 transition-shadow duration-200', {
+    variants: {
+        variant: {
+            default: 'border-border/50 bg-muted/30',
+            info: 'border-sky-200/50 bg-gradient-to-r from-sky-50 to-sky-50/50',
+            warning: 'border-amber-200/50 bg-gradient-to-r from-amber-50 to-amber-50/50',
+            success: 'border-emerald-200/50 bg-gradient-to-r from-emerald-50 to-emerald-50/50',
+            error: 'border-rose-200/50 bg-gradient-to-r from-rose-50 to-rose-50/50'
+        }
+    },
+    defaultVariants: {
+        variant: 'default'
+    }
+});
+const noteBlockIconVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cva"])('rounded-lg p-2', {
+    variants: {
+        variant: {
+            default: 'bg-muted',
+            info: 'bg-sky-100',
+            warning: 'bg-amber-100',
+            success: 'bg-emerald-100',
+            error: 'bg-rose-100'
+        }
+    },
+    defaultVariants: {
+        variant: 'default'
+    }
+});
+const NoteBlock = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c = _s(({ children, icon, variant, className, iconClassName, disableAnimation = false }, forwardedRef)=>{
+    _s();
+    const internalRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const ref = forwardedRef || internalRef;
+    // Apply scroll animation unless disabled
+    if (!disableAnimation) {
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"])(ref, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$globalNoteAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["globalNoteAnimationOptions"].noteBlock);
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        ref: ref,
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])(noteBlockVariants({
+            variant
+        }), // Hover effect: increase box-shadow depth
+        'hover:shadow-md', className),
+        children: [
+            icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])(noteBlockIconVariants({
+                    variant
+                }), iconClassName),
+                children: icon
+            }, void 0, false, {
+                fileName: "[project]/Desktop/Dayflow/components/layout/note-block.tsx",
+                lineNumber: 103,
+                columnNumber: 11
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex-1",
+                children: children
+            }, void 0, false, {
+                fileName: "[project]/Desktop/Dayflow/components/layout/note-block.tsx",
+                lineNumber: 107,
+                columnNumber: 9
+            }, ("TURBOPACK compile-time value", void 0))
+        ]
+    }, void 0, true, {
+        fileName: "[project]/Desktop/Dayflow/components/layout/note-block.tsx",
+        lineNumber: 93,
+        columnNumber: 7
+    }, ("TURBOPACK compile-time value", void 0));
+}, "hy2M2dsOld8E7PvAwvyxvRkKvkM=")), "hy2M2dsOld8E7PvAwvyxvRkKvkM=");
+_c1 = NoteBlock;
+NoteBlock.displayName = 'NoteBlock';
+function NoteBlockTitle({ children, className }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])('text-sm font-medium', className),
+        children: children
+    }, void 0, false, {
+        fileName: "[project]/Desktop/Dayflow/components/layout/note-block.tsx",
+        lineNumber: 129,
+        columnNumber: 5
+    }, this);
+}
+_c2 = NoteBlockTitle;
+function NoteBlockDescription({ children, className }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])('text-sm', className),
+        children: children
+    }, void 0, false, {
+        fileName: "[project]/Desktop/Dayflow/components/layout/note-block.tsx",
+        lineNumber: 147,
+        columnNumber: 5
+    }, this);
+}
+_c3 = NoteBlockDescription;
+const noteBlockTextColors = {
+    default: {
+        title: 'text-foreground',
+        description: 'text-muted-foreground'
+    },
+    info: {
+        title: 'text-sky-800',
+        description: 'text-sky-700/80'
+    },
+    warning: {
+        title: 'text-amber-800',
+        description: 'text-amber-700/80'
+    },
+    success: {
+        title: 'text-emerald-800',
+        description: 'text-emerald-700/80'
+    },
+    error: {
+        title: 'text-rose-800',
+        description: 'text-rose-700/80'
+    }
+};
+var _c, _c1, _c2, _c3;
+__turbopack_context__.k.register(_c, "NoteBlock$forwardRef");
+__turbopack_context__.k.register(_c1, "NoteBlock");
+__turbopack_context__.k.register(_c2, "NoteBlockTitle");
+__turbopack_context__.k.register(_c3, "NoteBlockDescription");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 "[project]/Desktop/Dayflow/components/ui/table.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -1030,337 +1200,30 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "TabsNav",
-    ()=>TabsNav
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/utils.ts [app-client] (ecmascript)");
-"use client";
-;
-;
-;
-function TabsNav({ tabs, activeTab, onTabChange, className }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("flex gap-1 rounded-lg bg-muted/50 p-1", className),
-        children: tabs.map((tab)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                onClick: ()=>onTabChange(tab.id),
-                className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("relative flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors", activeTab === tab.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"),
-                children: [
-                    activeTab === tab.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                        layoutId: "active-tab",
-                        className: "absolute inset-0 rounded-md bg-card shadow-sm dark:bg-card",
-                        transition: {
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 30
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx",
-                        lineNumber: 32,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "relative",
-                        children: tab.label
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx",
-                        lineNumber: 38,
-                        columnNumber: 11
-                    }, this),
-                    tab.count !== undefined && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("relative flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-xs", activeTab === tab.id ? "bg-[hsl(168_76%_40%)] text-white" : "bg-muted-foreground/20 text-muted-foreground"),
-                        children: tab.count
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx",
-                        lineNumber: 40,
-                        columnNumber: 13
-                    }, this)
-                ]
-            }, tab.id, true, {
-                fileName: "[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx",
-                lineNumber: 23,
-                columnNumber: 9
-            }, this))
-    }, void 0, false, {
-        fileName: "[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx",
-        lineNumber: 21,
-        columnNumber: 5
-    }, this);
-}
-_c = TabsNav;
-var _c;
-__turbopack_context__.k.register(_c, "TabsNav");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/Desktop/Dayflow/lib/api.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-/**
- * API Client for Dayflow HRMS
- * Connects frontend to FastAPI backend running on localhost:8000
- */ __turbopack_context__.s([
-    "APIError",
-    ()=>APIError,
-    "approveLeaveRequest",
-    ()=>approveLeaveRequest,
-    "checkIn",
-    ()=>checkIn,
-    "checkOut",
-    ()=>checkOut,
-    "clearToken",
-    ()=>clearToken,
-    "createLeaveRequest",
-    ()=>createLeaveRequest,
-    "getAdminDashboard",
-    ()=>getAdminDashboard,
-    "getAllLeaveRequests",
-    ()=>getAllLeaveRequests,
-    "getAttendanceHistory",
-    ()=>getAttendanceHistory,
-    "getEmployee",
-    ()=>getEmployee,
-    "getEmployeeDashboard",
-    ()=>getEmployeeDashboard,
-    "getEmployeePayroll",
-    ()=>getEmployeePayroll,
-    "getEmployees",
-    ()=>getEmployees,
-    "getMyLeaveRequests",
-    ()=>getMyLeaveRequests,
-    "getMyPayroll",
-    ()=>getMyPayroll,
-    "getMyProfile",
-    ()=>getMyProfile,
-    "getNotifications",
-    ()=>getNotifications,
-    "getToken",
-    ()=>getToken,
-    "login",
-    ()=>login,
-    "logout",
-    ()=>logout,
-    "markNotificationRead",
-    ()=>markNotificationRead,
-    "rejectLeaveRequest",
-    ()=>rejectLeaveRequest,
-    "setToken",
-    ()=>setToken,
-    "signup",
-    ()=>signup,
-    "updateMyProfile",
-    ()=>updateMyProfile
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-const API_BASE_URL = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-function getToken() {
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
-    return localStorage.getItem('dayflow_token');
-}
-function setToken(token) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        localStorage.setItem('dayflow_token', token);
-    }
-}
-function clearToken() {
-    if ("TURBOPACK compile-time truthy", 1) {
-        localStorage.removeItem('dayflow_token');
-    }
-}
-// Generic fetch wrapper with auth
-async function apiFetch(endpoint, options = {}) {
-    const token = getToken();
-    const headers = {
-        'Content-Type': 'application/json',
-        ...options.headers || {}
-    };
-    if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-    }
-    let response;
-    try {
-        response = await fetch(`${API_BASE_URL}${endpoint}`, {
-            ...options,
-            headers
-        });
-    } catch (error) {
-        // Network error
-        throw new APIError('Network error. Please check your connection.', 0, {
-            networkError: true
-        });
-    }
-    if (!response.ok) {
-        const errorData = await response.json().catch(()=>({}));
-        // Handle 401 - clear token and redirect to login
-        if (response.status === 401) {
-            clearToken();
-            if ("TURBOPACK compile-time truthy", 1) {
-                window.location.href = '/auth/login';
-            }
-        }
-        throw new APIError(errorData.message || errorData.detail || `API Error: ${response.status}`, response.status, errorData);
-    }
-    // Handle empty responses (204 No Content)
-    const text = await response.text();
-    if (!text) {
-        return {};
-    }
-    return JSON.parse(text);
-}
-class APIError extends Error {
-    status;
-    data;
-    constructor(message, status, data){
-        super(message);
-        this.name = 'APIError';
-        this.status = status;
-        this.data = data;
-    }
-}
-async function login(data) {
-    const response = await apiFetch('/api/auth/login', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    });
-    // Store the token
-    setToken(response.access_token);
-    return response;
-}
-async function signup(data) {
-    const response = await apiFetch('/api/auth/signup', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    });
-    // Note: Signup doesn't return a token - user must login after signup
-    return response;
-}
-function logout() {
-    clearToken();
-}
-async function checkIn() {
-    return apiFetch('/api/attendance/check-in', {
-        method: 'POST'
-    });
-}
-async function checkOut() {
-    return apiFetch('/api/attendance/check-out', {
-        method: 'POST'
-    });
-}
-async function getAttendanceHistory(params) {
-    const searchParams = new URLSearchParams();
-    if (params?.start_date) searchParams.append('start_date', params.start_date);
-    if (params?.end_date) searchParams.append('end_date', params.end_date);
-    if (params?.user_id) searchParams.append('user_id', String(params.user_id));
-    const query = searchParams.toString();
-    return apiFetch(`/api/attendance/history${query ? `?${query}` : ''}`);
-}
-async function createLeaveRequest(data) {
-    return apiFetch('/api/leave/request', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    });
-}
-async function getMyLeaveRequests(page = 1, pageSize = 10) {
-    return apiFetch(`/api/leave/my-requests?page=${page}&page_size=${pageSize}`);
-}
-async function getAllLeaveRequests(page = 1, pageSize = 10, status) {
-    const params = new URLSearchParams({
-        page: String(page),
-        page_size: String(pageSize)
-    });
-    if (status) params.append('status_filter', status);
-    return apiFetch(`/api/leave/all-requests?${params.toString()}`);
-}
-async function approveLeaveRequest(requestId, review) {
-    return apiFetch(`/api/leave/${requestId}/approve`, {
-        method: 'PUT',
-        body: JSON.stringify(review || {})
-    });
-}
-async function rejectLeaveRequest(requestId, review) {
-    return apiFetch(`/api/leave/${requestId}/reject`, {
-        method: 'PUT',
-        body: JSON.stringify(review || {})
-    });
-}
-async function getMyProfile() {
-    return apiFetch('/api/profile/me');
-}
-async function updateMyProfile(data) {
-    return apiFetch('/api/profile/me', {
-        method: 'PUT',
-        body: JSON.stringify(data)
-    });
-}
-async function getEmployeeDashboard() {
-    return apiFetch('/api/dashboard/employee');
-}
-async function getAdminDashboard() {
-    return apiFetch('/api/dashboard/admin');
-}
-async function getEmployees(page = 1, pageSize = 10, department) {
-    const params = new URLSearchParams({
-        page: String(page),
-        page_size: String(pageSize)
-    });
-    if (department) params.append('department', department);
-    return apiFetch(`/api/employees?${params.toString()}`);
-}
-async function getEmployee(employeeId) {
-    return apiFetch(`/api/employees/${employeeId}`);
-}
-async function getMyPayroll() {
-    return apiFetch('/api/payroll/me');
-}
-async function getEmployeePayroll(employeeId) {
-    return apiFetch(`/api/payroll/${employeeId}`);
-}
-async function getNotifications(page = 1, pageSize = 10) {
-    return apiFetch(`/api/notifications?page=${page}&page_size=${pageSize}`);
-}
-async function markNotificationRead(id) {
-    return apiFetch(`/api/notifications/${id}/read`, {
-        method: 'POST'
-    });
-}
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/Desktop/Dayflow/app/employee/attendance/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/Desktop/Dayflow/app/employee/payroll/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>EmployeeAttendancePage
+    ()=>EmployeePayrollPage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$page$2d$header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/layout/page-header.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$section$2d$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/layout/section-card.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$note$2d$block$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/layout/note-block.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$data$2d$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/data-table/data-table.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/status-badge.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$tabs$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/mock-data.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$dollar$2d$sign$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DollarSign$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/dollar-sign.js [app-client] (ecmascript) <export default as DollarSign>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/download.js [app-client] (ecmascript) <export default as Download>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/shield.js [app-client] (ecmascript) <export default as Shield>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/button.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/log-in.js [app-client] (ecmascript) <export default as LogIn>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-client] (ecmascript) <export default as CheckCircle>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$index$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/index.ts [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/hooks.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/animations/attendanceAnimations.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/api.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$payrollAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/animations/payrollAnimations.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -1376,177 +1239,95 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function EmployeeAttendancePage() {
+function EmployeePayrollPage() {
     _s();
-    const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("daily");
-    const [isCheckedIn, setIsCheckedIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [currentCheckIn, setCurrentCheckIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [isAnimating, setIsAnimating] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [attendanceRecords, setAttendanceRecords] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const latestPayroll = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["payrollRecords"].find((p)=>p.status === "paid");
     // Refs for animations
     const pageHeaderRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const checkInCardRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const historyCardRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     // Apply animations
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"])(pageHeaderRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceAnimationOptions"].pageHeader);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"])(checkInCardRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceAnimationOptions"].statusChips);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"])(historyCardRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceAnimationOptions"].filters);
-    // Fetch attendance history on mount
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "EmployeeAttendancePage.useEffect": ()=>{
-            async function fetchData() {
-                try {
-                    const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAttendanceHistory"])();
-                    // Map API response to frontend format
-                    const records = response.records.map({
-                        "EmployeeAttendancePage.useEffect.fetchData.records": (record)=>({
-                                id: String(record.id),
-                                date: record.date,
-                                checkIn: record.check_in || undefined,
-                                checkOut: record.check_out || undefined,
-                                status: record.status.toLowerCase().replace(' ', '-'),
-                                workHours: record.check_in && record.check_out ? Math.round((new Date(`1970-01-01T${record.check_out}`).getTime() - new Date(`1970-01-01T${record.check_in}`).getTime()) / 3600000 * 10) / 10 : undefined
-                            })
-                    }["EmployeeAttendancePage.useEffect.fetchData.records"]);
-                    setAttendanceRecords(records);
-                    // Check today's status
-                    const today = new Date().toISOString().split('T')[0];
-                    const todayRecord = response.records.find({
-                        "EmployeeAttendancePage.useEffect.fetchData.todayRecord": (r)=>r.date === today
-                    }["EmployeeAttendancePage.useEffect.fetchData.todayRecord"]);
-                    if (todayRecord?.check_in) {
-                        setIsCheckedIn(true);
-                        setCurrentCheckIn(todayRecord.check_in);
-                    }
-                } catch (error) {
-                    console.error('Failed to fetch attendance:', error);
-                } finally{
-                    setIsLoading(false);
-                }
-            }
-            fetchData();
-        }
-    }["EmployeeAttendancePage.useEffect"], []);
-    const handleCheckIn = async ()=>{
-        setIsAnimating(true);
-        try {
-            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["checkIn"])();
-            const time = response.check_in_time || new Date().toLocaleTimeString("en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false
-            });
-            setIsCheckedIn(true);
-            setCurrentCheckIn(time);
-            __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Checked in at ${time}`);
-            // Refresh attendance records
-            const historyResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAttendanceHistory"])();
-            const records = historyResponse.records.map((record)=>({
-                    id: String(record.id),
-                    date: record.date,
-                    checkIn: record.check_in || undefined,
-                    checkOut: record.check_out || undefined,
-                    status: record.status.toLowerCase().replace(' ', '-'),
-                    workHours: record.check_in && record.check_out ? Math.round((new Date(`1970-01-01T${record.check_out}`).getTime() - new Date(`1970-01-01T${record.check_in}`).getTime()) / 3600000 * 10) / 10 : undefined
-                }));
-            setAttendanceRecords(records);
-        } catch (error) {
-            if (error instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["APIError"]) {
-                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(error.message);
-            } else {
-                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Failed to check in. Please try again.");
-            }
-        } finally{
-            setIsAnimating(false);
-        }
-    };
-    const handleCheckOut = async ()=>{
-        setIsAnimating(true);
-        try {
-            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["checkOut"])();
-            const time = response.check_out_time || new Date().toLocaleTimeString("en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false
-            });
-            __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Checked out at ${time}`);
-            // Refresh attendance records
-            const historyResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAttendanceHistory"])();
-            const records = historyResponse.records.map((record)=>({
-                    id: String(record.id),
-                    date: record.date,
-                    checkIn: record.check_in || undefined,
-                    checkOut: record.check_out || undefined,
-                    status: record.status.toLowerCase().replace(' ', '-'),
-                    workHours: record.check_in && record.check_out ? Math.round((new Date(`1970-01-01T${record.check_out}`).getTime() - new Date(`1970-01-01T${record.check_in}`).getTime()) / 3600000 * 10) / 10 : undefined
-                }));
-            setAttendanceRecords(records);
-        } catch (error) {
-            if (error instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["APIError"]) {
-                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(error.message);
-            } else {
-                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Failed to check out. Please try again.");
-            }
-        } finally{
-            setIsAnimating(false);
-        }
-    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"])(pageHeaderRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$payrollAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["payrollAnimationOptions"].pageHeader);
     const statusVariant = (status)=>{
         switch(status){
-            case "present":
+            case "paid":
                 return "success";
-            case "absent":
-                return "destructive";
-            case "half-day":
-                return "warning";
-            case "leave":
+            case "processed":
                 return "info";
             default:
-                return "default";
+                return "pending";
         }
     };
     const columns = [
         {
-            key: "date",
-            header: "Date",
+            key: "month",
+            header: "Month",
             cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                     className: "font-medium",
-                    children: row.date
+                    children: row.month
                 }, void 0, false, {
-                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 147,
-                    columnNumber: 40
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 41,
+                    columnNumber: 37
                 }, this)
         },
         {
-            key: "checkIn",
-            header: "Check In",
+            key: "basicSalary",
+            header: "Basic Salary",
             cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "font-mono text-sm",
-                    children: row.checkIn || "-"
-                }, void 0, false, {
-                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 152,
-                    columnNumber: 40
+                    className: "font-mono",
+                    children: [
+                        "$",
+                        row.basicSalary.toLocaleString()
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 46,
+                    columnNumber: 37
                 }, this)
         },
         {
-            key: "checkOut",
-            header: "Check Out",
+            key: "allowances",
+            header: "Allowances",
             cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "font-mono text-sm",
-                    children: row.checkOut || "-"
-                }, void 0, false, {
-                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 157,
-                    columnNumber: 40
+                    className: "font-mono text-emerald-600",
+                    children: [
+                        "+$",
+                        row.allowances.toLocaleString()
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 52,
+                    columnNumber: 9
                 }, this)
         },
         {
-            key: "workHours",
-            header: "Work Hours",
-            cell: (row)=>row.workHours ? `${row.workHours}h` : "-"
+            key: "deductions",
+            header: "Deductions",
+            cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                    className: "font-mono text-rose-500",
+                    children: [
+                        "-$",
+                        row.deductions.toLocaleString()
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 59,
+                    columnNumber: 9
+                }, this)
+        },
+        {
+            key: "netSalary",
+            header: "Net Salary",
+            cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                    className: "font-mono font-semibold text-foreground",
+                    children: [
+                        "$",
+                        row.netSalary.toLocaleString()
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 66,
+                    columnNumber: 9
+                }, this)
         },
         {
             key: "status",
@@ -1555,12 +1336,48 @@ function EmployeeAttendancePage() {
                     variant: statusVariant(row.status),
                     dot: true,
                     className: "capitalize",
-                    children: row.status.replace("-", " ")
+                    children: row.status
                 }, void 0, false, {
-                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 168,
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 73,
                     columnNumber: 9
                 }, this)
+        },
+        {
+            key: "actions",
+            header: "",
+            cell: (row)=>row.status === "paid" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                    whileHover: {
+                        scale: 1.05
+                    },
+                    whileTap: {
+                        scale: 0.95
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                        variant: "ghost",
+                        size: "sm",
+                        className: "text-[hsl(168_76%_40%)]",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
+                                className: "mr-2 h-4 w-4"
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                lineNumber: 85,
+                                columnNumber: 15
+                            }, this),
+                            "Slip"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                        lineNumber: 84,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 83,
+                    columnNumber: 11
+                }, this),
+            className: "text-right"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1568,281 +1385,319 @@ function EmployeeAttendancePage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 ref: pageHeaderRef,
-                className: "attendance-page-header",
+                className: "payroll-page-header",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$page$2d$header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PageHeader"], {
-                    title: "Attendance",
-                    subtitle: "Track your daily attendance and work hours",
+                    title: "Payroll",
+                    subtitle: "View your salary information and pay slips",
                     breadcrumbs: [
                         {
                             label: "Dashboard",
                             href: "/employee/dashboard"
                         },
                         {
-                            label: "Attendance"
+                            label: "Payroll"
                         }
                     ]
                 }, void 0, false, {
-                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 178,
+                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                    lineNumber: 97,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                lineNumber: 177,
+                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                lineNumber: 96,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                variants: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["staggerContainer"],
+                initial: "initial",
+                animate: "animate",
                 className: "space-y-6 p-4 lg:p-6",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        ref: checkInCardRef,
-                        className: "attendance-status-chips",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$section$2d$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SectionCard"], {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex flex-col items-center justify-between gap-6 sm:flex-row",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center gap-5",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                animate: isAnimating ? {
-                                                    scale: [
-                                                        1,
-                                                        1.1,
-                                                        1
-                                                    ]
-                                                } : {},
-                                                transition: {
-                                                    duration: 0.5
-                                                },
-                                                className: `relative rounded-2xl p-5 ${isCheckedIn ? "bg-gradient-to-br from-emerald-500/10 to-emerald-500/5" : "bg-gradient-to-br from-[hsl(168_76%_40%_/_0.1)] to-[hsl(168_76%_40%_/_0.05)]"}`,
-                                                children: [
-                                                    isCheckedIn ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__["CheckCircle"], {
-                                                        className: "h-10 w-10 text-emerald-500"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 197,
-                                                        columnNumber: 21
-                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
-                                                        className: "h-10 w-10 text-[hsl(168_76%_40%)]"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 199,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    isCheckedIn && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                        initial: {
-                                                            scale: 0
-                                                        },
-                                                        animate: {
-                                                            scale: 1
-                                                        },
-                                                        className: "absolute -right-1 -top-1 h-4 w-4 rounded-full bg-emerald-500"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 202,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                lineNumber: 191,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-lg font-semibold",
-                                                        children: new Date().toLocaleDateString("en-US", {
-                                                            weekday: "long",
-                                                            year: "numeric",
-                                                            month: "long",
-                                                            day: "numeric"
-                                                        })
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 210,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
-                                                        mode: "wait",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
-                                                            initial: {
-                                                                opacity: 0,
-                                                                y: -8
-                                                            },
-                                                            animate: {
-                                                                opacity: 1,
-                                                                y: 0
-                                                            },
-                                                            exit: {
-                                                                opacity: 0,
-                                                                y: 8
-                                                            },
-                                                            className: "text-sm text-muted-foreground",
-                                                            children: isCheckedIn ? `Checked in at ${currentCheckIn}` : "You haven't checked in yet"
-                                                        }, isCheckedIn ? "checked-in" : "not-checked", false, {
-                                                            fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                            lineNumber: 219,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 218,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                lineNumber: 209,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                        lineNumber: 190,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                        whileHover: {
-                                            scale: 1.02
-                                        },
-                                        whileTap: {
-                                            scale: 0.98
-                                        },
-                                        children: !isCheckedIn ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                            onClick: handleCheckIn,
-                                            size: "lg",
-                                            disabled: isAnimating,
-                                            className: "bg-[hsl(174_70%_17%)] shadow-lg shadow-[hsl(174_70%_17%_/_0.2)] hover:bg-[hsl(174_70%_22%)]",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__["LogIn"], {
-                                                    className: "mr-2 h-5 w-5"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                    lineNumber: 239,
-                                                    columnNumber: 21
-                                                }, this),
-                                                "Check In"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                            lineNumber: 233,
-                                            columnNumber: 19
-                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                            onClick: handleCheckOut,
-                                            variant: "outline",
-                                            size: "lg",
-                                            disabled: isAnimating,
-                                            className: "border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
-                                                    className: "mr-2 h-5 w-5"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                    lineNumber: 250,
-                                                    columnNumber: 21
-                                                }, this),
-                                                "Check Out"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                            lineNumber: 243,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                        lineNumber: 231,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                lineNumber: 189,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                            lineNumber: 188,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                        lineNumber: 187,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        ref: historyCardRef,
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$section$2d$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SectionCard"], {
-                            title: "Attendance History",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                        variants: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["staggerItem"],
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$note$2d$block$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["NoteBlock"], {
+                            variant: "warning",
+                            icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
+                                className: "h-5 w-5 text-amber-600"
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                lineNumber: 107,
+                                columnNumber: 46
+                            }, void 0),
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$tabs$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsNav"], {
-                                    tabs: [
-                                        {
-                                            id: "daily",
-                                            label: "Daily View"
-                                        },
-                                        {
-                                            id: "weekly",
-                                            label: "Weekly View"
-                                        }
-                                    ],
-                                    activeTab: activeTab,
-                                    onTabChange: setActiveTab,
-                                    className: "mb-6"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$note$2d$block$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["NoteBlockTitle"], {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$note$2d$block$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["noteBlockTextColors"].warning.title,
+                                    children: "Confidential Information"
                                 }, void 0, false, {
-                                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                    lineNumber: 262,
+                                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$data$2d$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataTable"], {
-                                    columns: columns,
-                                    data: attendanceRecords,
-                                    emptyTitle: "No attendance records",
-                                    emptyDescription: "Your attendance records will appear here"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$note$2d$block$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["NoteBlockDescription"], {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$note$2d$block$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["noteBlockTextColors"].warning.description,
+                                    children: "This is confidential salary information. If you notice any discrepancies, please contact HR."
                                 }, void 0, false, {
-                                    fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                    lineNumber: 272,
+                                    fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                    lineNumber: 111,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                            lineNumber: 261,
+                            fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                        lineNumber: 260,
+                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                        lineNumber: 106,
+                        columnNumber: 9
+                    }, this),
+                    latestPayroll && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                        variants: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["staggerItem"],
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$section$2d$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SectionCard"], {
+                            title: "Latest Salary Breakdown",
+                            description: latestPayroll.month,
+                            delay: 0.1,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        initial: {
+                                            opacity: 0,
+                                            y: 12
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.2
+                                        },
+                                        className: "rounded-xl bg-muted/30 p-5",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-sm font-medium text-muted-foreground",
+                                                children: "Basic Salary"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 128,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "mt-1 font-mono text-2xl font-semibold",
+                                                children: [
+                                                    "$",
+                                                    latestPayroll.basicSalary.toLocaleString()
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 129,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                        lineNumber: 122,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        initial: {
+                                            opacity: 0,
+                                            y: 12
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.25
+                                        },
+                                        className: "rounded-xl bg-emerald-50 p-5",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-sm font-medium text-emerald-700",
+                                                children: "Allowances"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 137,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "mt-1 font-mono text-2xl font-semibold text-emerald-600",
+                                                children: [
+                                                    "+$",
+                                                    latestPayroll.allowances.toLocaleString()
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 138,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                        lineNumber: 131,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        initial: {
+                                            opacity: 0,
+                                            y: 12
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.3
+                                        },
+                                        className: "rounded-xl bg-rose-50 p-5",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-sm font-medium text-rose-700",
+                                                children: "Deductions"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 148,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "mt-1 font-mono text-2xl font-semibold text-rose-500",
+                                                children: [
+                                                    "-$",
+                                                    latestPayroll.deductions.toLocaleString()
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 149,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                        lineNumber: 142,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        initial: {
+                                            opacity: 0,
+                                            y: 12
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.35
+                                        },
+                                        className: "rounded-xl bg-gradient-to-br from-[hsl(168_76%_40%_/_0.1)] to-[hsl(161_94%_40%_/_0.05)] p-5",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-sm font-medium text-[hsl(168_76%_35%)]",
+                                                children: "Net Salary"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 159,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "mt-1 flex items-center gap-2",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$dollar$2d$sign$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DollarSign$3e$__["DollarSign"], {
+                                                        className: "h-6 w-6 text-[hsl(168_76%_40%)]"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                        lineNumber: 161,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "font-mono text-2xl font-bold text-[hsl(174_70%_17%)]",
+                                                        children: latestPayroll.netSalary.toLocaleString()
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                        lineNumber: 162,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                                lineNumber: 160,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                        lineNumber: 153,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                lineNumber: 121,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                            lineNumber: 120,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                        lineNumber: 119,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                        variants: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["staggerItem"],
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$layout$2f$section$2d$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SectionCard"], {
+                            title: "Payroll History",
+                            description: "Your salary records for the past months",
+                            delay: 0.2,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$data$2d$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataTable"], {
+                                columns: columns,
+                                data: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["payrollRecords"],
+                                emptyTitle: "No payroll records",
+                                emptyDescription: "Your payroll history will appear here"
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                                lineNumber: 175,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                            lineNumber: 174,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                        lineNumber: 173,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                lineNumber: 185,
+                fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+                lineNumber: 104,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-        lineNumber: 176,
+        fileName: "[project]/Desktop/Dayflow/app/employee/payroll/page.tsx",
+        lineNumber: 95,
         columnNumber: 5
     }, this);
 }
-_s(EmployeeAttendancePage, "yIG/AoKSjPWtEalC7wpXa4FRWjo=", false, function() {
+_s(EmployeePayrollPage, "T4IphpBWdIq6RlaHCjtqzhA6TiA=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"]
     ];
 });
-_c = EmployeeAttendancePage;
+_c = EmployeePayrollPage;
 var _c;
-__turbopack_context__.k.register(_c, "EmployeeAttendancePage");
+__turbopack_context__.k.register(_c, "EmployeePayrollPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
 ]);
 
-//# sourceMappingURL=Desktop_Dayflow_f93bea74._.js.map
+//# sourceMappingURL=Desktop_Dayflow_988cd19b._.js.map

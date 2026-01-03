@@ -1,21 +1,31 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
 import { NoteBlock, NoteBlockTitle, NoteBlockDescription, noteBlockTextColors } from "@/components/layout/note-block"
 import { DataTable } from "@/components/data-table/data-table"
 import { StatusBadge } from "@/components/ui/status-badge"
-import { payrollRecords } from "@/lib/mock-data"
-import { DollarSign, Download, Shield } from "lucide-react"
+import { DollarSign, Download, Shield, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import { useScrollAnimation, payrollAnimationOptions } from "@/lib/motion/index"
-import type { PayrollRecord } from "@/lib/types"
+import { getMyPayroll, type PayrollRecord as APIPayrollRecord } from "@/lib/api"
+
+interface PayrollDisplayRecord {
+  id: string
+  month: string
+  basicSalary: number
+  allowances: number
+  deductions: number
+  netSalary: number
+  status: 'paid' | 'processed' | 'pending'
+}
 
 export default function EmployeePayrollPage() {
-  const latestPayroll = payrollRecords.find((p) => p.status === "paid")
+  const [payrollData, setPayrollData] = useState<APIPayrollRecord | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
   
   // Refs for animations
   const pageHeaderRef = useRef<HTMLDivElement>(null)
@@ -23,7 +33,34 @@ export default function EmployeePayrollPage() {
   // Apply animations
   useScrollAnimation(pageHeaderRef, payrollAnimationOptions.pageHeader)
 
-  const statusVariant = (status: PayrollRecord["status"]) => {
+  useEffect(() => {
+    async function fetchPayroll() {
+      try {
+        const data = await getMyPayroll()
+        setPayrollData(data)
+      } catch (error) {
+        console.error('Failed to fetch payroll:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchPayroll()
+  }, [])
+
+  // Convert API data to display format
+  const payrollRecords: PayrollDisplayRecord[] = payrollData ? [{
+    id: String(payrollData.id),
+    month: new Date(payrollData.effective_date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+    basicSalary: payrollData.basic_salary,
+    allowances: payrollData.allowances,
+    deductions: payrollData.deductions,
+    netSalary: payrollData.net_salary,
+    status: 'paid' as const
+  }] : []
+
+  const latestPayroll = payrollRecords[0]
+
+  const statusVariant = (status: PayrollDisplayRecord["status"]) => {
     switch (status) {
       case "paid":
         return "success"
@@ -38,38 +75,38 @@ export default function EmployeePayrollPage() {
     {
       key: "month",
       header: "Month",
-      cell: (row: PayrollRecord) => <span className="font-medium">{row.month}</span>,
+      cell: (row: PayrollDisplayRecord) => <span className="font-medium">{row.month}</span>,
     },
     {
       key: "basicSalary",
       header: "Basic Salary",
-      cell: (row: PayrollRecord) => <span className="font-mono">${row.basicSalary.toLocaleString()}</span>,
+      cell: (row: PayrollDisplayRecord) => <span className="font-mono">${row.basicSalary.toLocaleString()}</span>,
     },
     {
       key: "allowances",
       header: "Allowances",
-      cell: (row: PayrollRecord) => (
+      cell: (row: PayrollDisplayRecord) => (
         <span className="font-mono text-emerald-600">+${row.allowances.toLocaleString()}</span>
       ),
     },
     {
       key: "deductions",
       header: "Deductions",
-      cell: (row: PayrollRecord) => (
+      cell: (row: PayrollDisplayRecord) => (
         <span className="font-mono text-rose-500">-${row.deductions.toLocaleString()}</span>
       ),
     },
     {
       key: "netSalary",
       header: "Net Salary",
-      cell: (row: PayrollRecord) => (
+      cell: (row: PayrollDisplayRecord) => (
         <span className="font-mono font-semibold text-foreground">${row.netSalary.toLocaleString()}</span>
       ),
     },
     {
       key: "status",
       header: "Status",
-      cell: (row: PayrollRecord) => (
+      cell: (row: PayrollDisplayRecord) => (
         <StatusBadge variant={statusVariant(row.status)} dot className="capitalize">
           {row.status}
         </StatusBadge>
@@ -78,7 +115,7 @@ export default function EmployeePayrollPage() {
     {
       key: "actions",
       header: "",
-      cell: (row: PayrollRecord) =>
+      cell: (row: PayrollDisplayRecord) =>
         row.status === "paid" && (
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button variant="ghost" size="sm" className="text-[hsl(168_76%_40%)]">
@@ -90,6 +127,14 @@ export default function EmployeePayrollPage() {
       className: "text-right",
     },
   ]
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen">

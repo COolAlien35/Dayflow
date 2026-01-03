@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,6 +13,7 @@ interface ProfileEditFormProps {
     name: string
     email: string
     phone: string
+    address?: string
     avatar?: string
   }
   onSubmit: (data: ProfileFormData) => void
@@ -25,6 +25,7 @@ export interface ProfileFormData {
   name: string
   email: string
   phone: string
+  address: string
 }
 
 export function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }: ProfileEditFormProps) {
@@ -32,6 +33,7 @@ export function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting 
     name: initialData.name,
     email: initialData.email,
     phone: initialData.phone,
+    address: initialData.address || "",
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -84,6 +86,7 @@ export function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting 
             value={formData.name}
             onChange={(e) => handleChange("name", e.target.value)}
             className={errors.name ? "border-destructive" : ""}
+            disabled
           />
           {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
         </div>
@@ -96,13 +99,19 @@ export function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting 
             value={formData.email}
             onChange={(e) => handleChange("email", e.target.value)}
             className={errors.email ? "border-destructive" : ""}
+            disabled
           />
           {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
         </div>
 
-        <div className="space-y-2 sm:col-span-2">
+        <div className="space-y-2">
           <Label htmlFor="phone">Phone Number</Label>
           <Input id="phone" value={formData.phone} onChange={(e) => handleChange("phone", e.target.value)} />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="address">Address</Label>
+          <Input id="address" value={formData.address} onChange={(e) => handleChange("address", e.target.value)} />
         </div>
       </div>
 

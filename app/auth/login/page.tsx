@@ -220,19 +220,7 @@ export default function LoginPage() {
         </Link>
       </p>
 
-      {/* Demo credentials - Not animated per requirements 5.5 (background elements) */}
-      <div className="rounded-xl border border-border/50 bg-card/50 p-4 text-center backdrop-blur-sm dark:bg-card/80">
-        <p className="text-xs font-semibold text-muted-foreground">Demo Credentials</p>
-        <div className="mt-2 space-y-1 text-xs text-muted-foreground">
-          <p>
-            Employee: <span className="font-mono text-foreground">employee@dayflow.com</span>
-          </p>
-          <p>
-            Admin: <span className="font-mono text-foreground">admin@dayflow.com</span>
-          </p>
-          <p>Password: any 6+ characters</p>
-        </div>
-      </div>
+
     </div>
   )
 }

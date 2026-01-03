@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect } from "react"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
-import { ProfileEditForm } from "@/components/forms/profile-edit-form"
+import { ProfileEditForm, ProfileFormData } from "@/components/forms/profile-edit-form"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Mail, Phone, Building2, Calendar, Briefcase, Edit2, MapPin, Users, Loader2 } from "lucide-react"
@@ -40,17 +41,17 @@ export default function EmployeeProfilePage() {
   const noteBoxRef = useRef<HTMLDivElement>(null)
 
   // Apply animations
-  useScrollAnimation(avatarRef, profileAnimationOptions.avatar)
-  useMountAnimation(infoRowsRef, profileAnimationOptions.infoRows)
-  useMountAnimation(editButtonRef, profileAnimationOptions.editButton)
-  useHoverAnimation(editButtonRef, profileAnimationOptions.editButtonHover)
-  useScrollAnimation(noteBoxRef, profileAnimationOptions.noteBox)
+  // useScrollAnimation(avatarRef, profileAnimationOptions.avatar)
+  // useMountAnimation(infoRowsRef, profileAnimationOptions.infoRows)
+  // useMountAnimation(editButtonRef, profileAnimationOptions.editButton)
+  // useHoverAnimation(editButtonRef, profileAnimationOptions.editButtonHover)
+  // useScrollAnimation(noteBoxRef, profileAnimationOptions.noteBox)
 
-  const handleSaveProfile = async (data: any) => {
+  const handleSaveProfile = async (data: ProfileFormData) => {
     try {
       await updateMyProfile({
         phone: data.phone,
-        address: data.address,
+        address: data.address, // Now strictly typed
       })
       await fetchProfile() // Refresh data
       setIsEditing(false)
@@ -116,6 +117,7 @@ export default function EmployeeProfilePage() {
                 name: fullName,
                 email: user.email,
                 phone: profile?.phone || "",
+                address: profile?.address || "",
               }}
               onSubmit={handleSaveProfile}
               onCancel={() => setIsEditing(false)}

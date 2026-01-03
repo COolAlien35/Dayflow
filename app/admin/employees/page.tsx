@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
@@ -10,15 +10,43 @@ import { TableActions } from "@/components/data-table/table-actions"
 import { EmployeeDetailDialog } from "@/components/dialogs/employee-detail-dialog"
 import { StatusBadge } from "@/components/ui/status-badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { employees } from "@/lib/mock-data"
-import { Plus, Eye, Edit, Trash2 } from "lucide-react"
+import { Plus, Eye, Edit, Trash2, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import type { Employee } from "@/lib/types"
+import { getEmployees } from "@/lib/api"
 
 export default function AdminEmployeesPage() {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
   const [showDetailDialog, setShowDetailDialog] = useState(false)
+  const [employees, setEmployees] = useState<Employee[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchEmployees() {
+      try {
+        const response = await getEmployees(1, 100)
+        const mappedEmployees: Employee[] = response.employees.map(emp => ({
+          id: String(emp.id),
+          name: emp.name,
+          email: emp.email,
+          phone: '',
+          department: emp.department || 'Unassigned',
+          position: emp.position || 'Employee',
+          joinDate: emp.joining_date || '',
+          status: emp.status?.toLowerCase() as Employee['status'] || 'active',
+          salary: 0,
+        }))
+        setEmployees(mappedEmployees)
+      } catch (error) {
+        console.error('Failed to fetch employees:', error)
+        toast.error('Failed to load employees')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchEmployees()
+  }, [])
 
   const statusVariant = (status: Employee["status"]) => {
     switch (status) {
@@ -145,21 +173,27 @@ export default function AdminEmployeesPage() {
         }}
       />
 
-      <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-6 p-4 lg:p-6">
-        <motion.div variants={staggerItem}>
-          <SectionCard>
-            <div className="space-y-4">
-              <TableFilters searchPlaceholder="Search employees..." filters={filters} />
-              <DataTable
-                columns={columns}
-                data={employees}
-                emptyTitle="No employees found"
-                emptyDescription="No employees match your current filters"
-              />
-            </div>
-          </SectionCard>
+      {isLoading ? (
+        <div className="flex min-h-[400px] items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </div>
+      ) : (
+        <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-6 p-4 lg:p-6">
+          <motion.div variants={staggerItem}>
+            <SectionCard>
+              <div className="space-y-4">
+                <TableFilters searchPlaceholder="Search employees..." filters={filters} />
+                <DataTable
+                  columns={columns}
+                  data={employees}
+                  emptyTitle="No employees found"
+                  emptyDescription="No employees match your current filters"
+                />
+              </div>
+            </SectionCard>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
 
       <EmployeeDetailDialog open={showDetailDialog} onOpenChange={setShowDetailDialog} employee={selectedEmployee} />
     </div>

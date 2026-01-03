@@ -534,7 +534,8 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         name: initialData.name,
         email: initialData.email,
-        phone: initialData.phone
+        phone: initialData.phone,
+        address: initialData.address || ""
     });
     const [errors, setErrors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
     const validate = ()=>{
@@ -578,7 +579,7 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 alt: formData.name
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 65,
+                                lineNumber: 67,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
@@ -586,13 +587,13 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 children: formData.name.split(" ").map((n)=>n[0]).join("")
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 66,
+                                lineNumber: 68,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 64,
+                        lineNumber: 66,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -604,20 +605,20 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 className: "mr-2 h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 74,
+                                lineNumber: 76,
                                 columnNumber: 11
                             }, this),
                             "Change Photo"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 73,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                lineNumber: 63,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -631,17 +632,18 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 children: "Full Name"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 81,
+                                lineNumber: 83,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                                 id: "name",
                                 value: formData.name,
                                 onChange: (e)=>handleChange("name", e.target.value),
-                                className: errors.name ? "border-destructive" : ""
+                                className: errors.name ? "border-destructive" : "",
+                                disabled: true
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 82,
+                                lineNumber: 84,
                                 columnNumber: 11
                             }, this),
                             errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -649,13 +651,13 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 children: errors.name
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 88,
+                                lineNumber: 91,
                                 columnNumber: 27
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 80,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -666,7 +668,7 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 children: "Email"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 92,
+                                lineNumber: 95,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -674,10 +676,11 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 type: "email",
                                 value: formData.email,
                                 onChange: (e)=>handleChange("email", e.target.value),
-                                className: errors.email ? "border-destructive" : ""
+                                className: errors.email ? "border-destructive" : "",
+                                disabled: true
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 93,
+                                lineNumber: 96,
                                 columnNumber: 11
                             }, this),
                             errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -685,24 +688,24 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 children: errors.email
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 100,
+                                lineNumber: 104,
                                 columnNumber: 28
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 91,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-2 sm:col-span-2",
+                        className: "space-y-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
                                 htmlFor: "phone",
                                 children: "Phone Number"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 104,
+                                lineNumber: 108,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -711,19 +714,45 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 onChange: (e)=>handleChange("phone", e.target.value)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 105,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 103,
+                        lineNumber: 107,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                htmlFor: "address",
+                                children: "Address"
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
+                                lineNumber: 113,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                id: "address",
+                                value: formData.address,
+                                onChange: (e)=>handleChange("address", e.target.value)
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
+                                lineNumber: 114,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
+                        lineNumber: 112,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                lineNumber: 79,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -737,7 +766,7 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 110,
+                        lineNumber: 119,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -748,30 +777,30 @@ function ProfileEditForm({ initialData, onSubmit, onCancel, isSubmitting }) {
                                 className: "mr-2 h-4 w-4 animate-spin"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                                lineNumber: 114,
+                                lineNumber: 123,
                                 columnNumber: 28
                             }, this),
                             "Save Changes"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                        lineNumber: 113,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-                lineNumber: 109,
+                lineNumber: 118,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/components/forms/profile-edit-form.tsx",
-        lineNumber: 62,
+        lineNumber: 64,
         columnNumber: 5
     }, this);
 }
-_s(ProfileEditForm, "kA5swcgzV+VuPK2ZlBUXPs9C5bc=");
+_s(ProfileEditForm, "M/D1NlpyoWgAjLBAl0uvOLw1xfo=");
 _c = ProfileEditForm;
 var _c;
 __turbopack_context__.k.register(_c, "ProfileEditForm");
@@ -864,15 +893,35 @@ async function apiFetch(endpoint, options = {}) {
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
     }
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers
-    });
+    let response;
+    try {
+        response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            ...options,
+            headers
+        });
+    } catch (error) {
+        // Network error
+        throw new APIError('Network error. Please check your connection.', 0, {
+            networkError: true
+        });
+    }
     if (!response.ok) {
         const errorData = await response.json().catch(()=>({}));
+        // Handle 401 - clear token and redirect to login
+        if (response.status === 401) {
+            clearToken();
+            if ("TURBOPACK compile-time truthy", 1) {
+                window.location.href = '/auth/login';
+            }
+        }
         throw new APIError(errorData.message || errorData.detail || `API Error: ${response.status}`, response.status, errorData);
     }
-    return response.json();
+    // Handle empty responses (204 No Content)
+    const text = await response.text();
+    if (!text) {
+        return {};
+    }
+    return JSON.parse(text);
 }
 class APIError extends Error {
     status;

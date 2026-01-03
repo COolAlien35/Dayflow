@@ -39,13 +39,29 @@ async function apiFetch<T>(
         (headers as Record<string, string>)['Authorization'] = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers,
-    });
+    let response: Response;
+    try {
+        response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            ...options,
+            headers,
+        });
+    } catch (error) {
+        // Network error - only throw if it's actually a network issue
+        console.error('Network error:', error);
+        throw new APIError('Unable to connect to server. Please try again.', 0, { networkError: true });
+    }
 
     if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
+        
+        // Handle 401 - clear token and redirect to login
+        if (response.status === 401) {
+            clearToken();
+            if (typeof window !== 'undefined') {
+                window.location.href = '/auth/login';
+            }
+        }
+        
         throw new APIError(
             errorData.message || errorData.detail || `API Error: ${response.status}`,
             response.status,
@@ -53,7 +69,13 @@ async function apiFetch<T>(
         );
     }
 
-    return response.json();
+    // Handle empty responses (204 No Content)
+    const text = await response.text();
+    if (!text) {
+        return {} as T;
+    }
+    
+    return JSON.parse(text);
 }
 
 // Custom error class for API errors

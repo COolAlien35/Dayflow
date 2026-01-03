@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { User } from "@/lib/types"
 import { Button } from "@/components/ui/button"
@@ -15,7 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Bell, Menu, Settings, UserIcon, LogOut, Search } from "lucide-react"
 import Link from "next/link"
-import { notifications } from "@/lib/mock-data"
+import { getNotifications, type Notification } from "@/lib/api"
 
 interface HeaderBarProps {
   user: User
@@ -23,7 +24,21 @@ interface HeaderBarProps {
 }
 
 export function HeaderBar({ user, onMenuClick }: HeaderBarProps) {
-  const unreadCount = notifications.filter((n) => !n.read).length
+  const [notifications, setNotifications] = useState<Notification[]>([])
+  const [unreadCount, setUnreadCount] = useState(0)
+
+  useEffect(() => {
+    async function fetchNotifications() {
+      try {
+        const response = await getNotifications(1, 5)
+        setNotifications(response.notifications)
+        setUnreadCount(response.unread_count)
+      } catch (error) {
+        console.error('Failed to fetch notifications:', error)
+      }
+    }
+    fetchNotifications()
+  }, [])
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/70 backdrop-blur-xl">
@@ -87,11 +102,13 @@ export function HeaderBar({ user, onMenuClick }: HeaderBarProps) {
                     className="flex flex-col items-start gap-1 p-3 focus:bg-muted/50"
                   >
                     <div className="flex items-center gap-2">
-                      {!notification.read && <span className="h-2 w-2 rounded-full bg-[hsl(168_76%_40%)]" />}
-                      <span className="font-medium">{notification.title}</span>
+                      {!notification.is_read && <span className="h-2 w-2 rounded-full bg-[hsl(168_76%_40%)]" />}
+                      <span className="font-medium">{notification.notification_type}</span>
                     </div>
                     <span className="text-sm text-muted-foreground">{notification.message}</span>
-                    <span className="text-xs text-muted-foreground/70">{notification.time}</span>
+                    <span className="text-xs text-muted-foreground/70">
+                      {new Date(notification.created_at).toLocaleDateString()}
+                    </span>
                   </DropdownMenuItem>
                 ))
               ) : (

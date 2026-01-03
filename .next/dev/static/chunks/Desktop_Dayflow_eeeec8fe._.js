@@ -281,15 +281,36 @@ async function apiFetch(endpoint, options = {}) {
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
     }
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers
-    });
+    let response;
+    try {
+        response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            ...options,
+            headers
+        });
+    } catch (error) {
+        // Network error - only throw if it's actually a network issue
+        console.error('Network error:', error);
+        throw new APIError('Unable to connect to server. Please try again.', 0, {
+            networkError: true
+        });
+    }
     if (!response.ok) {
         const errorData = await response.json().catch(()=>({}));
+        // Handle 401 - clear token and redirect to login
+        if (response.status === 401) {
+            clearToken();
+            if ("TURBOPACK compile-time truthy", 1) {
+                window.location.href = '/auth/login';
+            }
+        }
         throw new APIError(errorData.message || errorData.detail || `API Error: ${response.status}`, response.status, errorData);
     }
-    return response.json();
+    // Handle empty responses (204 No Content)
+    const text = await response.text();
+    if (!text) {
+        return {};
+    }
+    return JSON.parse(text);
 }
 class APIError extends Error {
     status;
@@ -373,7 +394,7 @@ async function getMyProfile() {
 }
 async function updateMyProfile(data) {
     return apiFetch('/api/profile/me', {
-        method: 'PATCH',
+        method: 'PUT',
         body: JSON.stringify(data)
     });
 }
@@ -855,73 +876,6 @@ function LoginPage() {
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
                 lineNumber: 212,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "rounded-xl border border-border/50 bg-card/50 p-4 text-center backdrop-blur-sm dark:bg-card/80",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-xs font-semibold text-muted-foreground",
-                        children: "Demo Credentials"
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                        lineNumber: 225,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-2 space-y-1 text-xs text-muted-foreground",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                children: [
-                                    "Employee: ",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "font-mono text-foreground",
-                                        children: "employee@dayflow.com"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                                        lineNumber: 228,
-                                        columnNumber: 23
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                                lineNumber: 227,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                children: [
-                                    "Admin: ",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "font-mono text-foreground",
-                                        children: "admin@dayflow.com"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                                        lineNumber: 231,
-                                        columnNumber: 20
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                                lineNumber: 230,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                children: "Password: any 6+ characters"
-                            }, void 0, false, {
-                                fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                                lineNumber: 233,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                        lineNumber: 226,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/Desktop/Dayflow/app/auth/login/page.tsx",
-                lineNumber: 224,
                 columnNumber: 7
             }, this)
         ]
