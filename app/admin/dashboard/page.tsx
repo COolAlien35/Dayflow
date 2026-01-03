@@ -38,6 +38,13 @@ export default function AdminDashboardPage() {
       }
     }
     fetchData()
+
+    // Auto-refresh every 30 seconds to show real-time check-ins
+    const interval = setInterval(() => {
+      getAdminDashboard().then(setDashboardData).catch(console.error)
+    }, 30000)
+
+    return () => clearInterval(interval)
   }, [])
 
   const pendingLeaves = dashboardData?.pending_leave_requests || []

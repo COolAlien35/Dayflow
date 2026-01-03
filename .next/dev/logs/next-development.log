@@ -3595,3 +3595,4 @@ Import traces:
 [02:08:25.347] Browser WARN    [AnimationController] Animation "mount-upiaxvrzm" failed validation and will not be registered
 [02:08:30.746] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin/employees color: rgb(120, 120, 120) color: inherit {"dp":"/admin/employees","o":"http://localhost:3000/admin/employees","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767439537997}
 [02:08:36.472] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin/attendance color: rgb(120, 120, 120) color: inherit {"dp":"/admin/attendance","o":"http://localhost:3000/admin/attendance","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1767439543722}
+[02:09:47.498] Server  LOG      ✓ Compiled in 192ms

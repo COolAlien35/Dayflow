@@ -874,6 +874,11 @@ function AdminDashboardPage() {
             }
         }
         fetchData();
+        // Auto-refresh every 30 seconds to show real-time check-ins
+        const interval = setInterval(()=>{
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getAdminDashboard"])().then(setDashboardData).catch(console.error);
+        }, 30000);
+        return ()=>clearInterval(interval);
     }, []);
     const pendingLeaves = dashboardData?.pending_leave_requests || [];
     const pendingCount = dashboardData?.pending_approvals || 0;
@@ -912,12 +917,12 @@ function AdminDashboardPage() {
                 className: "h-8 w-8 animate-spin text-[hsl(168_76%_40%)]"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                lineNumber: 77,
+                lineNumber: 84,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-            lineNumber: 76,
+            lineNumber: 83,
             columnNumber: 7
         }, this);
     }
@@ -938,12 +943,12 @@ function AdminDashboardPage() {
                     ]
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                    lineNumber: 89,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                lineNumber: 88,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -973,7 +978,7 @@ function AdminDashboardPage() {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                        lineNumber: 109,
+                                        lineNumber: 116,
                                         columnNumber: 25
                                     }, void 0),
                                     disableAnimation: true,
@@ -982,22 +987,22 @@ function AdminDashboardPage() {
                                         children: alert.message
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                        lineNumber: 112,
+                                        lineNumber: 119,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 114,
                                     columnNumber: 17
                                 }, this)
                             }, alert.id, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 101,
+                                lineNumber: 108,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                        lineNumber: 99,
+                        lineNumber: 106,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1012,13 +1017,13 @@ function AdminDashboardPage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 132,
                                     columnNumber: 19
                                 }, void 0),
                                 delay: 0.1
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 121,
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1029,13 +1034,13 @@ function AdminDashboardPage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 139,
                                     columnNumber: 19
                                 }, void 0),
                                 delay: 0.15
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 128,
+                                lineNumber: 135,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1046,13 +1051,13 @@ function AdminDashboardPage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 146,
                                     columnNumber: 19
                                 }, void 0),
                                 delay: 0.2
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 135,
+                                lineNumber: 142,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1063,19 +1068,19 @@ function AdminDashboardPage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 146,
+                                    lineNumber: 153,
                                     columnNumber: 19
                                 }, void 0),
                                 delay: 0.25
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 142,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                        lineNumber: 120,
+                        lineNumber: 127,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1100,18 +1105,18 @@ function AdminDashboardPage() {
                                                     className: "ml-1 h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                    lineNumber: 165,
+                                                    lineNumber: 172,
                                                     columnNumber: 30
                                                 }, void 0)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                            lineNumber: 164,
+                                            lineNumber: 171,
                                             columnNumber: 19
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                        lineNumber: 158,
+                                        lineNumber: 165,
                                         columnNumber: 17
                                     }, void 0),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1141,7 +1146,7 @@ function AdminDashboardPage() {
                                                                         alt: `User ${request.user_id}`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                                        lineNumber: 182,
+                                                                        lineNumber: 189,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
@@ -1152,13 +1157,13 @@ function AdminDashboardPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                                        lineNumber: 183,
+                                                                        lineNumber: 190,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                                lineNumber: 181,
+                                                                lineNumber: 188,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1171,7 +1176,7 @@ function AdminDashboardPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                                        lineNumber: 188,
+                                                                        lineNumber: 195,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1183,19 +1188,19 @@ function AdminDashboardPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                                        lineNumber: 189,
+                                                                        lineNumber: 196,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                                lineNumber: 187,
+                                                                lineNumber: 194,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 180,
+                                                        lineNumber: 187,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatusBadge"], {
@@ -1204,35 +1209,35 @@ function AdminDashboardPage() {
                                                         children: "Pending"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 194,
+                                                        lineNumber: 201,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, request.id, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                lineNumber: 173,
+                                                lineNumber: 180,
                                                 columnNumber: 21
                                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "py-8 text-center text-sm text-muted-foreground",
                                             children: "No pending approvals"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 207,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 177,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 154,
+                                    lineNumber: 161,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 153,
+                                lineNumber: 160,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1251,7 +1256,7 @@ function AdminDashboardPage() {
                                                         children: "Present"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 214,
+                                                        lineNumber: 221,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1259,13 +1264,13 @@ function AdminDashboardPage() {
                                                         children: dashboardData?.attendance_overview?.present || 0
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 215,
+                                                        lineNumber: 222,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                lineNumber: 213,
+                                                lineNumber: 220,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1276,7 +1281,7 @@ function AdminDashboardPage() {
                                                         children: "Absent"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 218,
+                                                        lineNumber: 225,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1284,13 +1289,13 @@ function AdminDashboardPage() {
                                                         children: dashboardData?.attendance_overview?.absent || 0
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 219,
+                                                        lineNumber: 226,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 224,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1301,7 +1306,7 @@ function AdminDashboardPage() {
                                                         children: "On Leave"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 222,
+                                                        lineNumber: 229,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1309,13 +1314,13 @@ function AdminDashboardPage() {
                                                         children: dashboardData?.attendance_overview?.on_leave || 0
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 223,
+                                                        lineNumber: 230,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 228,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1326,7 +1331,7 @@ function AdminDashboardPage() {
                                                         children: "Half Day"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 226,
+                                                        lineNumber: 233,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1334,47 +1339,47 @@ function AdminDashboardPage() {
                                                         children: dashboardData?.attendance_overview?.half_day || 0
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                        lineNumber: 227,
+                                                        lineNumber: 234,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 232,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                        lineNumber: 212,
+                                        lineNumber: 219,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 215,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                                lineNumber: 207,
+                                lineNumber: 214,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                        lineNumber: 151,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-                lineNumber: 96,
+                lineNumber: 103,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/admin/dashboard/page.tsx",
-        lineNumber: 87,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }
