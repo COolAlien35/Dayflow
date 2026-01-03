@@ -2417,6 +2417,16 @@
     background-color: hsl(var(--destructive));
   }
 
+  .bg-destructive\/10 {
+    background-color: hsl(var(--destructive));
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-destructive\/10 {
+      background-color: color-mix(in oklab, hsl(var(--destructive)) 10%, transparent);
+    }
+  }
+
   .bg-emerald-50 {
     background-color: var(--color-emerald-50);
   }
@@ -6671,6 +6681,16 @@
     border-color: hsl(var(--input));
   }
 
+  .dark\:bg-amber-950\/20:is(.dark *) {
+    background-color: #46190133;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .dark\:bg-amber-950\/20:is(.dark *) {
+      background-color: color-mix(in oklab, var(--color-amber-950) 20%, transparent);
+    }
+  }
+
   .dark\:bg-amber-950\/50:is(.dark *) {
     background-color: #46190180;
   }
@@ -6715,6 +6735,16 @@
     }
   }
 
+  .dark\:bg-emerald-950\/20:is(.dark *) {
+    background-color: #002c2233;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .dark\:bg-emerald-950\/20:is(.dark *) {
+      background-color: color-mix(in oklab, var(--color-emerald-950) 20%, transparent);
+    }
+  }
+
   .dark\:bg-emerald-950\/50:is(.dark *) {
     background-color: #002c2280;
   }
@@ -6735,6 +6765,16 @@
     }
   }
 
+  .dark\:bg-rose-950\/20:is(.dark *) {
+    background-color: #4d021833;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .dark\:bg-rose-950\/20:is(.dark *) {
+      background-color: color-mix(in oklab, var(--color-rose-950) 20%, transparent);
+    }
+  }
+
   .dark\:bg-rose-950\/50:is(.dark *) {
     background-color: #4d021880;
   }
@@ -6742,6 +6782,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .dark\:bg-rose-950\/50:is(.dark *) {
       background-color: color-mix(in oklab, var(--color-rose-950) 50%, transparent);
+    }
+  }
+
+  .dark\:bg-sky-950\/20:is(.dark *) {
+    background-color: #052f4a33;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .dark\:bg-sky-950\/20:is(.dark *) {
+      background-color: color-mix(in oklab, var(--color-sky-950) 20%, transparent);
     }
   }
 

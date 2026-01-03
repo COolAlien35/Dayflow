@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
@@ -9,21 +9,43 @@ import { StatCard } from "@/components/ui/stat-card"
 import { StatusBadge } from "@/components/ui/status-badge"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { employees, leaveRequests, adminUser } from "@/lib/mock-data"
-import { Users, Clock, CheckSquare, DollarSign, ArrowRight, AlertTriangle, Info } from "lucide-react"
+import { Users, Clock, CheckSquare, DollarSign, ArrowRight, AlertTriangle, Info, Loader2 } from "lucide-react"
 import Link from "next/link"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import { useScrollAnimation, dashboardAnimationOptions } from "@/lib/motion/index"
+import { getAdminDashboard, getMyProfile, AdminDashboard, UserProfile } from "@/lib/api"
+import { toast } from "sonner"
 
 export default function AdminDashboardPage() {
-  const activeEmployees = employees.filter((e) => e.status === "active").length
-  const pendingLeaves = leaveRequests.filter((l) => l.status === "pending")
-  const onLeaveEmployees = employees.filter((e) => e.status === "on-leave").length
+  const [loading, setLoading] = useState(true)
+  const [dashboardData, setDashboardData] = useState<AdminDashboard | null>(null)
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
 
-  const alerts = [
-    { id: 1, message: "2 pending leave requests require your approval", type: "warning", icon: AlertTriangle },
-    { id: 2, message: "January payroll processing deadline in 3 days", type: "info", icon: Info },
-  ]
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [dashboard, profile] = await Promise.all([
+          getAdminDashboard(),
+          getMyProfile()
+        ])
+        setDashboardData(dashboard)
+        setUserProfile(profile)
+      } catch (error) {
+        console.error("Failed to load admin dashboard data", error)
+        toast.error("Failed to load dashboard data")
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
+
+  const pendingLeaves = dashboardData?.pending_leave_requests || []
+  const pendingCount = dashboardData?.pending_approvals || 0
+
+  const alerts = pendingCount > 0
+    ? [{ id: 1, message: `${pendingCount} pending leave request${pendingCount > 1 ? 's' : ''} require${pendingCount === 1 ? 's' : ''} your approval`, type: "warning", icon: AlertTriangle }]
+    : []
 
   // Refs for scroll animations
   const pageTitleRef = useRef<HTMLDivElement>(null)
@@ -49,11 +71,23 @@ export default function AdminDashboardPage() {
     start: dashboardAnimationOptions.featureCards.start,
   })
 
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-[hsl(168_76%_40%)]" />
+      </div>
+    )
+  }
+
+  const userName = userProfile?.profile
+    ? userProfile.profile.first_name
+    : userProfile?.user.email.split("@")[0] || "Admin"
+
   return (
     <div className="min-h-screen">
       <div ref={pageTitleRef} className="dashboard-page-title">
         <PageHeader
-          title={`Welcome back, ${adminUser.name.split(" ")[0]}`}
+          title={`Welcome back, ${userName}`}
           subtitle="Here's an overview of your organization"
           breadcrumbs={[{ label: "Admin Dashboard" }]}
         />
@@ -86,30 +120,29 @@ export default function AdminDashboardPage() {
         <div ref={statsGridRef} className="dashboard-feature-card-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             title="Total Employees"
-            value={employees.length}
-            subtitle={`${activeEmployees} active`}
+            value={dashboardData?.total_employees || 0}
+            subtitle="registered"
             icon={<Users className="h-5 w-5" />}
-            trend={{ value: 5, label: "this month", positive: true }}
             delay={0.1}
           />
           <StatCard
             title="Present Today"
-            value={activeEmployees - onLeaveEmployees}
-            subtitle={`${onLeaveEmployees} on leave`}
+            value={dashboardData?.present_today || 0}
+            subtitle={`${dashboardData?.on_leave_today || 0} on leave`}
             icon={<Clock className="h-5 w-5" />}
             delay={0.15}
           />
           <StatCard
             title="Pending Approvals"
-            value={pendingLeaves.length}
+            value={pendingCount}
             subtitle="Leave requests"
             icon={<CheckSquare className="h-5 w-5" />}
             delay={0.2}
           />
           <StatCard
-            title="Monthly Payroll"
-            value="$48.5K"
-            subtitle="January 2025"
+            title="On Leave Today"
+            value={dashboardData?.on_leave_today || 0}
+            subtitle="employees"
             icon={<DollarSign className="h-5 w-5" />}
             delay={0.25}
           />
@@ -146,18 +179,15 @@ export default function AdminDashboardPage() {
                     >
                       <div className="flex items-center gap-3">
                         <Avatar className="h-10 w-10 ring-2 ring-border/50">
-                          <AvatarImage src="/placeholder.svg" alt={request.employeeName} />
+                          <AvatarImage src="/placeholder.svg" alt={`User ${request.user_id}`} />
                           <AvatarFallback className="bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white">
-                            {request.employeeName
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
+                            U{request.user_id}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="font-medium">{request.employeeName}</p>
+                          <p className="font-medium">Employee #{request.user_id}</p>
                           <p className="text-xs text-muted-foreground capitalize">
-                            {request.type} leave • {request.startDate}
+                            {request.leave_type} leave • {request.start_date}
                           </p>
                         </div>
                       </div>
@@ -176,91 +206,30 @@ export default function AdminDashboardPage() {
           {/* Recent Employees */}
           <motion.div variants={staggerItem}>
             <SectionCard
-              title="Recent Employees"
+              title="Today's Attendance Overview"
               delay={0.35}
-              action={
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  asChild
-                  className="text-[hsl(168_76%_40%)] hover:text-[hsl(168_76%_35%)]"
-                >
-                  <Link href="/admin/employees">
-                    View all <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </Button>
-              }
             >
-              <div className="space-y-3">
-                {employees.slice(0, 4).map((employee, index) => {
-                  const statusVariant =
-                    employee.status === "active" ? "success" : employee.status === "on-leave" ? "warning" : "default"
-
-                  return (
-                    <motion.div
-                      key={employee.id}
-                      initial={{ opacity: 0, x: -12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.45 + index * 0.05 }}
-                      className="flex items-center justify-between rounded-xl border border-border/50 bg-muted/20 p-4 transition-colors hover:bg-muted/40"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Avatar className="h-10 w-10 ring-2 ring-border/50">
-                          <AvatarImage src={employee.avatar || "/placeholder.svg"} alt={employee.name} />
-                          <AvatarFallback className="bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white">
-                            {employee.name
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-medium">{employee.name}</p>
-                          <p className="text-xs text-muted-foreground">
-                            {employee.position} • {employee.department}
-                          </p>
-                        </div>
-                      </div>
-                      <StatusBadge variant={statusVariant} dot className="capitalize">
-                        {employee.status.replace("-", " ")}
-                      </StatusBadge>
-                    </motion.div>
-                  )
-                })}
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-border/50 bg-emerald-50 dark:bg-emerald-950/20 p-5">
+                  <p className="text-sm font-medium text-muted-foreground">Present</p>
+                  <p className="mt-1 text-3xl font-bold text-emerald-700 dark:text-emerald-400">{dashboardData?.attendance_overview?.present || 0}</p>
+                </div>
+                <div className="rounded-xl border border-border/50 bg-rose-50 dark:bg-rose-950/20 p-5">
+                  <p className="text-sm font-medium text-muted-foreground">Absent</p>
+                  <p className="mt-1 text-3xl font-bold text-rose-700 dark:text-rose-400">{dashboardData?.attendance_overview?.absent || 0}</p>
+                </div>
+                <div className="rounded-xl border border-border/50 bg-sky-50 dark:bg-sky-950/20 p-5">
+                  <p className="text-sm font-medium text-muted-foreground">On Leave</p>
+                  <p className="mt-1 text-3xl font-bold text-sky-700 dark:text-sky-400">{dashboardData?.attendance_overview?.on_leave || 0}</p>
+                </div>
+                <div className="rounded-xl border border-border/50 bg-amber-50 dark:bg-amber-950/20 p-5">
+                  <p className="text-sm font-medium text-muted-foreground">Half Day</p>
+                  <p className="mt-1 text-3xl font-bold text-amber-700 dark:text-amber-400">{dashboardData?.attendance_overview?.half_day || 0}</p>
+                </div>
               </div>
             </SectionCard>
           </motion.div>
         </div>
-
-        {/* Department Overview */}
-        <motion.div variants={staggerItem}>
-          <SectionCard title="Department Overview" delay={0.4}>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {["Engineering", "Design", "Marketing", "Finance"].map((dept, index) => {
-                const count = employees.filter((e) => e.department === dept).length
-                const colors = [
-                  "from-[hsl(168_76%_40%_/_0.1)] to-[hsl(168_76%_40%_/_0.02)]",
-                  "from-[hsl(161_94%_40%_/_0.15)] to-[hsl(161_94%_40%_/_0.02)]",
-                  "from-emerald-500/10 to-emerald-500/2",
-                  "from-amber-500/10 to-amber-500/2",
-                ]
-                return (
-                  <motion.div
-                    key={dept}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.05 }}
-                    className={`rounded-xl border border-border/50 bg-gradient-to-br ${colors[index]} p-5`}
-                  >
-                    <p className="text-sm font-medium text-muted-foreground">{dept}</p>
-                    <p className="mt-1 text-3xl font-bold">{count}</p>
-                    <p className="text-xs text-muted-foreground">employees</p>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </SectionCard>
-        </motion.div>
       </motion.div>
     </div>
   )
