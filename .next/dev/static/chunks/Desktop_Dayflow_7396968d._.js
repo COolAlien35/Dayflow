@@ -1116,7 +1116,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$compon
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/status-badge.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$tabs$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/tabs-nav.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/button.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/mock-data.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/log-in.js [app-client] (ecmascript) <export default as LogIn>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
@@ -1125,6 +1124,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_m
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$index$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/index.ts [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/hooks.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion/animations/attendanceAnimations.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/api.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -1143,9 +1143,11 @@ var _s = __turbopack_context__.k.signature();
 function EmployeeAttendancePage() {
     _s();
     const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("daily");
-    const [isCheckedIn, setIsCheckedIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(!!__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceRecords"][0]?.checkIn);
-    const [currentCheckIn, setCurrentCheckIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceRecords"][0]?.checkIn || null);
+    const [isCheckedIn, setIsCheckedIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [currentCheckIn, setCurrentCheckIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [isAnimating, setIsAnimating] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [attendanceRecords, setAttendanceRecords] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     // Refs for animations
     const pageHeaderRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const checkInCardRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
@@ -1154,31 +1156,105 @@ function EmployeeAttendancePage() {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"])(pageHeaderRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceAnimationOptions"].pageHeader);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"])(checkInCardRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceAnimationOptions"].statusChips);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"])(historyCardRef, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$animations$2f$attendanceAnimations$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceAnimationOptions"].filters);
-    const handleCheckIn = ()=>{
+    // Fetch attendance history on mount
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "EmployeeAttendancePage.useEffect": ()=>{
+            async function fetchData() {
+                try {
+                    const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAttendanceHistory"])();
+                    // Map API response to frontend format
+                    const records = response.records.map({
+                        "EmployeeAttendancePage.useEffect.fetchData.records": (record)=>({
+                                id: String(record.id),
+                                date: record.date,
+                                checkIn: record.check_in || undefined,
+                                checkOut: record.check_out || undefined,
+                                status: record.status.toLowerCase().replace(' ', '-'),
+                                workHours: record.check_in && record.check_out ? Math.round((new Date(`1970-01-01T${record.check_out}`).getTime() - new Date(`1970-01-01T${record.check_in}`).getTime()) / 3600000 * 10) / 10 : undefined
+                            })
+                    }["EmployeeAttendancePage.useEffect.fetchData.records"]);
+                    setAttendanceRecords(records);
+                    // Check today's status
+                    const today = new Date().toISOString().split('T')[0];
+                    const todayRecord = response.records.find({
+                        "EmployeeAttendancePage.useEffect.fetchData.todayRecord": (r)=>r.date === today
+                    }["EmployeeAttendancePage.useEffect.fetchData.todayRecord"]);
+                    if (todayRecord?.check_in) {
+                        setIsCheckedIn(true);
+                        setCurrentCheckIn(todayRecord.check_in);
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch attendance:', error);
+                } finally{
+                    setIsLoading(false);
+                }
+            }
+            fetchData();
+        }
+    }["EmployeeAttendancePage.useEffect"], []);
+    const handleCheckIn = async ()=>{
         setIsAnimating(true);
-        const time = new Date().toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false
-        });
-        setTimeout(()=>{
+        try {
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["checkIn"])();
+            const time = response.check_in_time || new Date().toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
+            });
             setIsCheckedIn(true);
             setCurrentCheckIn(time);
-            setIsAnimating(false);
             __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Checked in at ${time}`);
-        }, 500);
-    };
-    const handleCheckOut = ()=>{
-        setIsAnimating(true);
-        const time = new Date().toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false
-        });
-        setTimeout(()=>{
+            // Refresh attendance records
+            const historyResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAttendanceHistory"])();
+            const records = historyResponse.records.map((record)=>({
+                    id: String(record.id),
+                    date: record.date,
+                    checkIn: record.check_in || undefined,
+                    checkOut: record.check_out || undefined,
+                    status: record.status.toLowerCase().replace(' ', '-'),
+                    workHours: record.check_in && record.check_out ? Math.round((new Date(`1970-01-01T${record.check_out}`).getTime() - new Date(`1970-01-01T${record.check_in}`).getTime()) / 3600000 * 10) / 10 : undefined
+                }));
+            setAttendanceRecords(records);
+        } catch (error) {
+            if (error instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["APIError"]) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(error.message);
+            } else {
+                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Failed to check in. Please try again.");
+            }
+        } finally{
             setIsAnimating(false);
+        }
+    };
+    const handleCheckOut = async ()=>{
+        setIsAnimating(true);
+        try {
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["checkOut"])();
+            const time = response.check_out_time || new Date().toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
+            });
             __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Checked out at ${time}`);
-        }, 500);
+            // Refresh attendance records
+            const historyResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAttendanceHistory"])();
+            const records = historyResponse.records.map((record)=>({
+                    id: String(record.id),
+                    date: record.date,
+                    checkIn: record.check_in || undefined,
+                    checkOut: record.check_out || undefined,
+                    status: record.status.toLowerCase().replace(' ', '-'),
+                    workHours: record.check_in && record.check_out ? Math.round((new Date(`1970-01-01T${record.check_out}`).getTime() - new Date(`1970-01-01T${record.check_in}`).getTime()) / 3600000 * 10) / 10 : undefined
+                }));
+            setAttendanceRecords(records);
+        } catch (error) {
+            if (error instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["APIError"]) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(error.message);
+            } else {
+                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Failed to check out. Please try again.");
+            }
+        } finally{
+            setIsAnimating(false);
+        }
     };
     const statusVariant = (status)=>{
         switch(status){
@@ -1203,7 +1279,7 @@ function EmployeeAttendancePage() {
                     children: row.date
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 72,
+                    lineNumber: 147,
                     columnNumber: 40
                 }, this)
         },
@@ -1215,7 +1291,7 @@ function EmployeeAttendancePage() {
                     children: row.checkIn || "-"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 77,
+                    lineNumber: 152,
                     columnNumber: 40
                 }, this)
         },
@@ -1227,7 +1303,7 @@ function EmployeeAttendancePage() {
                     children: row.checkOut || "-"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 82,
+                    lineNumber: 157,
                     columnNumber: 40
                 }, this)
         },
@@ -1246,7 +1322,7 @@ function EmployeeAttendancePage() {
                     children: row.status.replace("-", " ")
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 93,
+                    lineNumber: 168,
                     columnNumber: 9
                 }, this)
         }
@@ -1271,12 +1347,12 @@ function EmployeeAttendancePage() {
                     ]
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                    lineNumber: 103,
+                    lineNumber: 178,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                lineNumber: 102,
+                lineNumber: 177,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1309,13 +1385,13 @@ function EmployeeAttendancePage() {
                                                         className: "h-10 w-10 text-emerald-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 122,
+                                                        lineNumber: 197,
                                                         columnNumber: 21
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
                                                         className: "h-10 w-10 text-[hsl(168_76%_40%)]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 124,
+                                                        lineNumber: 199,
                                                         columnNumber: 21
                                                     }, this),
                                                     isCheckedIn && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1328,13 +1404,13 @@ function EmployeeAttendancePage() {
                                                         className: "absolute -right-1 -top-1 h-4 w-4 rounded-full bg-emerald-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 127,
+                                                        lineNumber: 202,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                lineNumber: 116,
+                                                lineNumber: 191,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1349,7 +1425,7 @@ function EmployeeAttendancePage() {
                                                         })
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 135,
+                                                        lineNumber: 210,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1371,24 +1447,24 @@ function EmployeeAttendancePage() {
                                                             children: isCheckedIn ? `Checked in at ${currentCheckIn}` : "You haven't checked in yet"
                                                         }, isCheckedIn ? "checked-in" : "not-checked", false, {
                                                             fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                            lineNumber: 144,
+                                                            lineNumber: 219,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                        lineNumber: 143,
+                                                        lineNumber: 218,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                lineNumber: 134,
+                                                lineNumber: 209,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 190,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1408,14 +1484,14 @@ function EmployeeAttendancePage() {
                                                     className: "mr-2 h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 239,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Check In"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                            lineNumber: 158,
+                                            lineNumber: 233,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                             onClick: handleCheckOut,
@@ -1428,35 +1504,35 @@ function EmployeeAttendancePage() {
                                                     className: "mr-2 h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                                    lineNumber: 175,
+                                                    lineNumber: 250,
                                                     columnNumber: 21
                                                 }, this),
                                                 "Check Out"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                            lineNumber: 168,
+                                            lineNumber: 243,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                        lineNumber: 156,
+                                        lineNumber: 231,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                lineNumber: 114,
+                                lineNumber: 189,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                            lineNumber: 113,
+                            lineNumber: 188,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                        lineNumber: 112,
+                        lineNumber: 187,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1480,44 +1556,44 @@ function EmployeeAttendancePage() {
                                     className: "mb-6"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                    lineNumber: 187,
+                                    lineNumber: 262,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$data$2d$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DataTable"], {
                                     columns: columns,
-                                    data: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["attendanceRecords"],
+                                    data: attendanceRecords,
                                     emptyTitle: "No attendance records",
                                     emptyDescription: "Your attendance records will appear here"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                                    lineNumber: 197,
+                                    lineNumber: 272,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                            lineNumber: 186,
+                            lineNumber: 261,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                        lineNumber: 185,
+                        lineNumber: 260,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-                lineNumber: 110,
+                lineNumber: 185,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/employee/attendance/page.tsx",
-        lineNumber: 101,
+        lineNumber: 176,
         columnNumber: 5
     }, this);
 }
-_s(EmployeeAttendancePage, "c7vwFUJudYpo7VAF/JKdwBAOpE4=", false, function() {
+_s(EmployeeAttendancePage, "yIG/AoKSjPWtEalC7wpXa4FRWjo=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollAnimation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMountAnimation"],

@@ -170,16 +170,15 @@ export default function AdminLeaveApprovalsPage() {
       cell: (row: LeaveRequest) => (
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10 ring-2 ring-border/50">
-            <AvatarImage src="/placeholder.svg" alt={row.employeeName} />
+            <AvatarImage src="/placeholder.svg" alt={row.employeeName || ''} />
             <AvatarFallback className="bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white">
               {row.employeeName
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+                ? row.employeeName.split(" ").map((n) => n[0]).join("")
+                : "??"}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-medium">{row.employeeName}</p>
+            <p className="font-medium">{row.employeeName || 'Unknown'}</p>
           </div>
         </div>
       ),
@@ -187,14 +186,14 @@ export default function AdminLeaveApprovalsPage() {
     {
       key: "type",
       header: "Leave Type",
-      cell: (row: LeaveRequest) => <span className="capitalize">{row.type} Leave</span>,
+      cell: (row: LeaveRequest) => <span className="capitalize">{row.type || ''} Leave</span>,
     },
     {
       key: "dates",
       header: "Duration",
       cell: (row: LeaveRequest) => (
         <span className="font-mono text-sm text-muted-foreground">
-          {row.startDate} - {row.endDate}
+          {row.startDate || ''} - {row.endDate || ''}
         </span>
       ),
     },

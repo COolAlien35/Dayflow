@@ -1971,6 +1971,8 @@ function AdminLeaveApprovalsPage() {
     const [showApprovalDialog, setShowApprovalDialog] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [leaveRequests, setLeaveRequests] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [activeFilters, setActiveFilters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
     // Refs for animations
     const tableRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     // Apply scroll animation to table
@@ -2003,7 +2005,42 @@ function AdminLeaveApprovalsPage() {
     const pendingRequests = leaveRequests.filter((r)=>r.status === "pending");
     const approvedRequests = leaveRequests.filter((r)=>r.status === "approved");
     const rejectedRequests = leaveRequests.filter((r)=>r.status === "rejected");
-    const filteredRequests = activeTab === "pending" ? pendingRequests : activeTab === "approved" ? approvedRequests : rejectedRequests;
+    const tabFilteredRequests = activeTab === "pending" ? pendingRequests : activeTab === "approved" ? approvedRequests : rejectedRequests;
+    // Apply search and filter to tab-filtered requests
+    const filteredRequests = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
+        return tabFilteredRequests.filter((req)=>{
+            // Search filter
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                const matchesSearch = req.employeeName.toLowerCase().includes(query) || req.type.toLowerCase().includes(query) || req.remarks && req.remarks.toLowerCase().includes(query);
+                if (!matchesSearch) return false;
+            }
+            // Type filter
+            if (activeFilters.type && activeFilters.type !== 'all') {
+                if (req.type !== activeFilters.type) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }, [
+        tabFilteredRequests,
+        searchQuery,
+        activeFilters
+    ]);
+    const handleSearchChange = (value)=>{
+        setSearchQuery(value);
+    };
+    const handleFilterChange = (key, value)=>{
+        setActiveFilters((prev)=>({
+                ...prev,
+                [key]: value
+            }));
+    };
+    const handleClearFilters = ()=>{
+        setSearchQuery("");
+        setActiveFilters({});
+    };
     const statusVariant = (status)=>{
         switch(status){
             case "approved":
@@ -2078,44 +2115,44 @@ function AdminLeaveApprovalsPage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarImage"], {
                                     src: "/placeholder.svg",
-                                    alt: row.employeeName
+                                    alt: row.employeeName || ''
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                                    lineNumber: 134,
+                                    lineNumber: 173,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                     className: "bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white",
-                                    children: row.employeeName.split(" ").map((n)=>n[0]).join("")
+                                    children: row.employeeName ? row.employeeName.split(" ").map((n)=>n[0]).join("") : "??"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                                    lineNumber: 135,
+                                    lineNumber: 174,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                            lineNumber: 133,
+                            lineNumber: 172,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "font-medium",
-                                children: row.employeeName
+                                children: row.employeeName || 'Unknown'
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                                lineNumber: 143,
+                                lineNumber: 181,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                            lineNumber: 142,
+                            lineNumber: 180,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 132,
+                    lineNumber: 171,
                     columnNumber: 9
                 }, this)
         },
@@ -2125,12 +2162,12 @@ function AdminLeaveApprovalsPage() {
             cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                     className: "capitalize",
                     children: [
-                        row.type,
+                        row.type || '',
                         " Leave"
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 151,
+                    lineNumber: 189,
                     columnNumber: 36
                 }, this)
         },
@@ -2140,13 +2177,13 @@ function AdminLeaveApprovalsPage() {
             cell: (row)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                     className: "font-mono text-sm text-muted-foreground",
                     children: [
-                        row.startDate,
+                        row.startDate || '',
                         " - ",
-                        row.endDate
+                        row.endDate || ''
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 157,
+                    lineNumber: 195,
                     columnNumber: 9
                 }, this)
         },
@@ -2158,7 +2195,7 @@ function AdminLeaveApprovalsPage() {
                     children: row.remarks || "-"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 166,
+                    lineNumber: 204,
                     columnNumber: 9
                 }, this)
         },
@@ -2172,7 +2209,7 @@ function AdminLeaveApprovalsPage() {
                     children: row.status
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 173,
+                    lineNumber: 211,
                     columnNumber: 9
                 }, this)
         },
@@ -2189,7 +2226,7 @@ function AdminLeaveApprovalsPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                            lineNumber: 184,
+                            lineNumber: 222,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(RejectButton, {
@@ -2199,13 +2236,13 @@ function AdminLeaveApprovalsPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                            lineNumber: 190,
+                            lineNumber: 228,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 183,
+                    lineNumber: 221,
                     columnNumber: 11
                 }, this),
             className: "w-24"
@@ -2252,7 +2289,7 @@ function AdminLeaveApprovalsPage() {
                 ]
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 217,
+                lineNumber: 255,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2282,7 +2319,7 @@ function AdminLeaveApprovalsPage() {
                             className: "mb-6"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                            lineNumber: 225,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2290,10 +2327,13 @@ function AdminLeaveApprovalsPage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$table$2d$filters$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableFilters"], {
                                     searchPlaceholder: "Search by employee name...",
-                                    filters: filters
+                                    filters: filters,
+                                    onSearchChange: handleSearchChange,
+                                    onFilterChange: handleFilterChange,
+                                    onClearFilters: handleClearFilters
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2306,29 +2346,29 @@ function AdminLeaveApprovalsPage() {
                                         emptyDescription: `There are no ${activeTab} leave requests at the moment`
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                                        lineNumber: 238,
+                                        lineNumber: 282,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 281,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                            lineNumber: 235,
+                            lineNumber: 273,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                    lineNumber: 224,
+                    lineNumber: 262,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 223,
+                lineNumber: 261,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$dialogs$2f$leave$2d$approval$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LeaveApprovalDialog"], {
@@ -2339,13 +2379,13 @@ function AdminLeaveApprovalsPage() {
                 onReject: handleReject
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 249,
+                lineNumber: 293,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-        lineNumber: 216,
+        lineNumber: 254,
         columnNumber: 5
     }, this);
 }
@@ -2365,7 +2405,7 @@ function ApproveButton({ onClick }) {
                 className: "h-5 w-5"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 275,
+                lineNumber: 319,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2373,13 +2413,13 @@ function ApproveButton({ onClick }) {
                 children: "Approve"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 276,
+                lineNumber: 320,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-        lineNumber: 268,
+        lineNumber: 312,
         columnNumber: 5
     }, this);
 }
@@ -2399,7 +2439,7 @@ function RejectButton({ onClick }) {
                 className: "h-5 w-5"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 296,
+                lineNumber: 340,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2407,13 +2447,13 @@ function RejectButton({ onClick }) {
                 children: "Reject"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-                lineNumber: 297,
+                lineNumber: 341,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/admin/leave-approvals/page.tsx",
-        lineNumber: 289,
+        lineNumber: 333,
         columnNumber: 5
     }, this);
 }

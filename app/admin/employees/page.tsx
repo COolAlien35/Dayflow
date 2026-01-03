@@ -9,6 +9,7 @@ import { TableFilters } from "@/components/data-table/table-filters"
 import { TableActions } from "@/components/data-table/table-actions"
 import { EmployeeDetailDialog } from "@/components/dialogs/employee-detail-dialog"
 import { AddEmployeeDialog } from "@/components/dialogs/add-employee-dialog"
+import { EditEmployeeDialog } from "@/components/dialogs/edit-employee-dialog"
 import { StatusBadge } from "@/components/ui/status-badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, Eye, Edit, Trash2, Loader2 } from "lucide-react"
@@ -21,6 +22,8 @@ export default function AdminEmployeesPage() {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
   const [showDetailDialog, setShowDetailDialog] = useState(false)
   const [showAddDialog, setShowAddDialog] = useState(false)
+  const [editEmployee, setEditEmployee] = useState<Employee | null>(null)
+  const [showEditDialog, setShowEditDialog] = useState(false)
   const [employees, setEmployees] = useState<Employee[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
@@ -170,7 +173,10 @@ export default function AdminEmployeesPage() {
             {
               label: "Edit",
               icon: <Edit className="h-4 w-4" />,
-              onClick: () => toast.info(`Edit ${row.name}`),
+              onClick: () => {
+                setEditEmployee(row)
+                setShowEditDialog(true)
+              },
             },
             {
               label: "Delete",
@@ -255,6 +261,33 @@ export default function AdminEmployeesPage() {
         onOpenChange={setShowAddDialog}
         onSuccess={() => {
           // Refresh employee list
+          async function refresh() {
+            try {
+              const response = await getEmployees(1, 100)
+              const mappedEmployees: Employee[] = response.employees.map(emp => ({
+                id: String(emp.id),
+                name: `${emp.first_name} ${emp.last_name}`.trim() || 'Unknown',
+                email: emp.email,
+                phone: '',
+                department: emp.department || 'Unassigned',
+                position: emp.position || 'Employee',
+                joinDate: emp.date_of_joining || '',
+                status: emp.status?.toLowerCase() as Employee['status'] || 'active',
+                salary: 0,
+              }))
+              setEmployees(mappedEmployees)
+            } catch (error) {
+              console.error('Failed to refresh employees:', error)
+            }
+          }
+          refresh()
+        }}
+      />
+      <EditEmployeeDialog
+        open={showEditDialog}
+        onOpenChange={setShowEditDialog}
+        employee={editEmployee}
+        onSuccess={() => {
           async function refresh() {
             try {
               const response = await getEmployees(1, 100)

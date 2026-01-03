@@ -1752,7 +1752,7 @@ function AdminAttendancePage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarImage"], {
                                     src: row.avatar || "/placeholder.svg",
-                                    alt: row.employeeName
+                                    alt: row.employeeName || ''
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
                                     lineNumber: 142,
@@ -1760,7 +1760,7 @@ function AdminAttendancePage() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                     className: "bg-gradient-to-br from-primary/20 to-accent/20 text-sm font-medium text-primary",
-                                    children: row.employeeName.split(" ").map((n)=>n[0]).join("")
+                                    children: row.employeeName ? row.employeeName.split(" ").map((n)=>n[0]).join("") : "??"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
                                     lineNumber: 143,
@@ -1776,24 +1776,24 @@ function AdminAttendancePage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "font-medium text-foreground",
-                                    children: row.employeeName
+                                    children: row.employeeName || 'Unknown'
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 151,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm text-muted-foreground",
-                                    children: row.department
+                                    children: row.department || ''
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 152,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                            lineNumber: 150,
+                            lineNumber: 149,
                             columnNumber: 11
                         }, this)
                     ]
@@ -1811,7 +1811,7 @@ function AdminAttendancePage() {
                     children: row.checkIn || "—"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                    lineNumber: 161,
+                    lineNumber: 160,
                     columnNumber: 9
                 }, this)
         },
@@ -1823,7 +1823,7 @@ function AdminAttendancePage() {
                     children: row.checkOut || "—"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                    lineNumber: 168,
+                    lineNumber: 167,
                     columnNumber: 9
                 }, this)
         },
@@ -1835,7 +1835,7 @@ function AdminAttendancePage() {
                     children: row.workHours ? `${row.workHours}h` : "—"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                    lineNumber: 177,
+                    lineNumber: 176,
                     columnNumber: 9
                 }, this)
         },
@@ -1848,7 +1848,7 @@ function AdminAttendancePage() {
                     children: row.status
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                    lineNumber: 186,
+                    lineNumber: 185,
                     columnNumber: 9
                 }, this)
         }
@@ -1914,12 +1914,12 @@ function AdminAttendancePage() {
                     ]
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                    lineNumber: 218,
+                    lineNumber: 217,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                lineNumber: 217,
+                lineNumber: 216,
                 columnNumber: 7
             }, this),
             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1928,12 +1928,12 @@ function AdminAttendancePage() {
                     className: "h-8 w-8 animate-spin text-muted-foreground"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                    lineNumber: 227,
+                    lineNumber: 226,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                lineNumber: 226,
+                lineNumber: 225,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "space-y-6 p-4 lg:p-6",
@@ -1949,13 +1949,13 @@ function AdminAttendancePage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 232,
                                     columnNumber: 76
                                 }, void 0),
                                 index: 0
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                lineNumber: 233,
+                                lineNumber: 232,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1965,7 +1965,7 @@ function AdminAttendancePage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 236,
                                     columnNumber: 21
                                 }, void 0),
                                 trend: {
@@ -1975,7 +1975,7 @@ function AdminAttendancePage() {
                                 index: 1
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                lineNumber: 234,
+                                lineNumber: 233,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -1985,13 +1985,13 @@ function AdminAttendancePage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 241,
+                                    lineNumber: 240,
                                     columnNumber: 64
                                 }, void 0),
                                 index: 2
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                lineNumber: 241,
+                                lineNumber: 240,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$stat$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatCard"], {
@@ -2001,19 +2001,19 @@ function AdminAttendancePage() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 242,
+                                    lineNumber: 241,
                                     columnNumber: 67
                                 }, void 0),
                                 index: 3
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                lineNumber: 242,
+                                lineNumber: 241,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                        lineNumber: 232,
+                        lineNumber: 231,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2041,7 +2041,7 @@ function AdminAttendancePage() {
                                     className: "mb-4"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 248,
+                                    lineNumber: 247,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2058,12 +2058,12 @@ function AdminAttendancePage() {
                                                 onClearFilters: handleClearFilters
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                                lineNumber: 260,
+                                                lineNumber: 259,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                            lineNumber: 259,
+                                            lineNumber: 258,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$data$2d$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataTable"], {
@@ -2073,36 +2073,36 @@ function AdminAttendancePage() {
                                             emptyDescription: "Attendance data will appear here"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                            lineNumber: 269,
+                                            lineNumber: 268,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                                    lineNumber: 258,
+                                    lineNumber: 257,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                            lineNumber: 247,
+                            lineNumber: 246,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                        lineNumber: 246,
+                        lineNumber: 245,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-                lineNumber: 230,
+                lineNumber: 229,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/admin/attendance/page.tsx",
-        lineNumber: 216,
+        lineNumber: 215,
         columnNumber: 5
     }, this);
 }
