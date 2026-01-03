@@ -11,7 +11,7 @@ from api.auth import hash_password
 
 
 def seed_admin():
-    """Create admin user with admin@company.com and password 'admin'."""
+    """Create admin user with admin@company.com and password 'Admin123'."""
     db = SessionLocal()
     
     try:
@@ -22,8 +22,8 @@ def seed_admin():
             print("Admin user already exists!")
             return
         
-        # Create admin user
-        password_hash = hash_password("admin123")  # Using admin123 to meet 6+ char requirement
+        # Create admin user (password: Admin123 - meets 8+ chars, uppercase, lowercase, digit)
+        password_hash = hash_password("Admin123")
         
         admin_user = User(
             email="admin@company.com",
@@ -49,7 +49,7 @@ def seed_admin():
         
         print("Admin user created successfully!")
         print("Email: admin@company.com")
-        print("Password: admin123")
+        print("Password: Admin123")
         
     except Exception as e:
         db.rollback()

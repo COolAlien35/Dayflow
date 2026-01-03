@@ -1,8 +1,10 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/admin/attendance/page": "app/admin/attendance/page.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
   "/admin/employees/page": "app/admin/employees/page.js",
   "/admin/leave-approvals/page": "app/admin/leave-approvals/page.js",
+  "/admin/payroll/page": "app/admin/payroll/page.js",
   "/admin/settings/page": "app/admin/settings/page.js",
   "/auth/login/page": "app/auth/login/page.js",
   "/auth/signup/page": "app/auth/signup/page.js",

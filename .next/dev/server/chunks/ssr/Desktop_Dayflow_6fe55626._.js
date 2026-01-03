@@ -1877,13 +1877,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$compon
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$dialogs$2f$employee$2d$detail$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/dialogs/employee-detail-dialog.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/status-badge.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/components/ui/avatar.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/mock-data.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/plus.js [app-ssr] (ecmascript) <export default as Plus>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript) <export default as Eye>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/square-pen.js [app-ssr] (ecmascript) <export default as Edit>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-ssr] (ecmascript) <export default as Trash2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/lucide-react/dist/esm/icons/loader-circle.js [app-ssr] (ecmascript) <export default as Loader2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/node_modules/sonner/dist/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/motion.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Dayflow/lib/api.ts [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
@@ -1903,6 +1904,76 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f
 function AdminEmployeesPage() {
     const [selectedEmployee, setSelectedEmployee] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [showDetailDialog, setShowDetailDialog] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [employees, setEmployees] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [activeFilters, setActiveFilters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        async function fetchEmployees() {
+            try {
+                const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getEmployees"])(1, 100);
+                const mappedEmployees = response.employees.map((emp)=>({
+                        id: String(emp.id),
+                        name: emp.name,
+                        email: emp.email,
+                        phone: '',
+                        department: emp.department || 'Unassigned',
+                        position: emp.position || 'Employee',
+                        joinDate: emp.joining_date || '',
+                        status: emp.status?.toLowerCase() || 'active',
+                        salary: 0
+                    }));
+                setEmployees(mappedEmployees);
+            } catch (error) {
+                console.error('Failed to fetch employees:', error);
+                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error('Failed to load employees');
+            } finally{
+                setIsLoading(false);
+            }
+        }
+        fetchEmployees();
+    }, []);
+    // Filter employees based on search and filters
+    const filteredEmployees = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
+        return employees.filter((emp)=>{
+            // Search filter
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                const matchesSearch = emp.name.toLowerCase().includes(query) || emp.email.toLowerCase().includes(query) || emp.department.toLowerCase().includes(query) || emp.position.toLowerCase().includes(query);
+                if (!matchesSearch) return false;
+            }
+            // Department filter
+            if (activeFilters.department && activeFilters.department !== 'all') {
+                if (emp.department.toLowerCase() !== activeFilters.department.toLowerCase()) {
+                    return false;
+                }
+            }
+            // Status filter
+            if (activeFilters.status && activeFilters.status !== 'all') {
+                if (emp.status !== activeFilters.status) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }, [
+        employees,
+        searchQuery,
+        activeFilters
+    ]);
+    const handleSearchChange = (value)=>{
+        setSearchQuery(value);
+    };
+    const handleFilterChange = (key, value)=>{
+        setActiveFilters((prev)=>({
+                ...prev,
+                [key]: value
+            }));
+    };
+    const handleClearFilters = ()=>{
+        setSearchQuery("");
+        setActiveFilters({});
+    };
     const statusVariant = (status)=>{
         switch(status){
             case "active":
@@ -1928,21 +1999,21 @@ function AdminEmployeesPage() {
                                     alt: row.name
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                    lineNumber: 41,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                     className: "bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white",
-                                    children: row.name.split(" ").map((n)=>n[0]).join("")
+                                    children: row.name ? row.name.split(" ").map((n)=>n[0]).join("") : "??"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                    lineNumber: 42,
+                                    lineNumber: 117,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                            lineNumber: 40,
+                            lineNumber: 115,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1952,7 +2023,7 @@ function AdminEmployeesPage() {
                                     children: row.name
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                    lineNumber: 50,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1960,19 +2031,19 @@ function AdminEmployeesPage() {
                                     children: row.email
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                    lineNumber: 51,
+                                    lineNumber: 125,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                            lineNumber: 49,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                    lineNumber: 39,
+                    lineNumber: 114,
                     columnNumber: 9
                 }, this)
         },
@@ -1984,7 +2055,7 @@ function AdminEmployeesPage() {
                     children: row.department
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                    lineNumber: 59,
+                    lineNumber: 133,
                     columnNumber: 32
                 }, this)
         },
@@ -2001,7 +2072,7 @@ function AdminEmployeesPage() {
                     children: row.joinDate
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                    lineNumber: 69,
+                    lineNumber: 143,
                     columnNumber: 32
                 }, this)
         },
@@ -2015,7 +2086,7 @@ function AdminEmployeesPage() {
                     children: row.status.replace("-", " ")
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                    lineNumber: 75,
+                    lineNumber: 149,
                     columnNumber: 9
                 }, this)
         },
@@ -2030,7 +2101,7 @@ function AdminEmployeesPage() {
                                 className: "h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                lineNumber: 88,
+                                lineNumber: 162,
                                 columnNumber: 21
                             }, void 0),
                             onClick: ()=>{
@@ -2044,7 +2115,7 @@ function AdminEmployeesPage() {
                                 className: "h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                lineNumber: 96,
+                                lineNumber: 170,
                                 columnNumber: 21
                             }, void 0),
                             onClick: ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].info(`Edit ${row.name}`)
@@ -2055,7 +2126,7 @@ function AdminEmployeesPage() {
                                 className: "h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                lineNumber: 101,
+                                lineNumber: 175,
                                 columnNumber: 21
                             }, void 0),
                             onClick: ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error(`Delete ${row.name}`),
@@ -2065,7 +2136,7 @@ function AdminEmployeesPage() {
                     ]
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                    lineNumber: 84,
+                    lineNumber: 158,
                     columnNumber: 9
                 }, this),
             className: "w-12"
@@ -2135,16 +2206,29 @@ function AdminEmployeesPage() {
                         className: "mr-2 h-4 w-4"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                        lineNumber: 144,
+                        lineNumber: 218,
                         columnNumber: 17
                     }, void 0)
                 }
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                lineNumber: 137,
+                lineNumber: 211,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+            isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex min-h-[400px] items-center justify-center",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                    className: "h-8 w-8 animate-spin text-muted-foreground"
+                }, void 0, false, {
+                    fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
+                    lineNumber: 224,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
+                lineNumber: 223,
+                columnNumber: 9
+            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                 variants: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$motion$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["staggerContainer"],
                 initial: "initial",
                 animate: "animate",
@@ -2157,42 +2241,45 @@ function AdminEmployeesPage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$table$2d$filters$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableFilters"], {
                                     searchPlaceholder: "Search employees...",
-                                    filters: filters
+                                    filters: filters,
+                                    onSearchChange: handleSearchChange,
+                                    onFilterChange: handleFilterChange,
+                                    onClearFilters: handleClearFilters
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                    lineNumber: 152,
-                                    columnNumber: 15
+                                    lineNumber: 231,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$data$2d$table$2f$data$2d$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataTable"], {
                                     columns: columns,
-                                    data: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["employees"],
+                                    data: filteredEmployees,
                                     emptyTitle: "No employees found",
                                     emptyDescription: "No employees match your current filters"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                                    lineNumber: 153,
-                                    columnNumber: 15
+                                    lineNumber: 238,
+                                    columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                            lineNumber: 151,
-                            columnNumber: 13
+                            lineNumber: 230,
+                            columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                        lineNumber: 150,
-                        columnNumber: 11
+                        lineNumber: 229,
+                        columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                    lineNumber: 149,
-                    columnNumber: 9
+                    lineNumber: 228,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                lineNumber: 148,
-                columnNumber: 7
+                lineNumber: 227,
+                columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Dayflow$2f$components$2f$dialogs$2f$employee$2d$detail$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EmployeeDetailDialog"], {
                 open: showDetailDialog,
@@ -2200,13 +2287,13 @@ function AdminEmployeesPage() {
                 employee: selectedEmployee
             }, void 0, false, {
                 fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-                lineNumber: 164,
+                lineNumber: 250,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Dayflow/app/admin/employees/page.tsx",
-        lineNumber: 136,
+        lineNumber: 210,
         columnNumber: 5
     }, this);
 }

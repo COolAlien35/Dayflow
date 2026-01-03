@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion } from "framer-motion"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
@@ -8,6 +8,7 @@ import { DataTable } from "@/components/data-table/data-table"
 import { TableFilters } from "@/components/data-table/table-filters"
 import { TableActions } from "@/components/data-table/table-actions"
 import { EmployeeDetailDialog } from "@/components/dialogs/employee-detail-dialog"
+import { AddEmployeeDialog } from "@/components/dialogs/add-employee-dialog"
 import { StatusBadge } from "@/components/ui/status-badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, Eye, Edit, Trash2, Loader2 } from "lucide-react"
@@ -19,8 +20,11 @@ import { getEmployees } from "@/lib/api"
 export default function AdminEmployeesPage() {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
   const [showDetailDialog, setShowDetailDialog] = useState(false)
+  const [showAddDialog, setShowAddDialog] = useState(false)
   const [employees, setEmployees] = useState<Employee[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [activeFilters, setActiveFilters] = useState<Record<string, string>>({})
 
   useEffect(() => {
     async function fetchEmployees() {
@@ -28,12 +32,12 @@ export default function AdminEmployeesPage() {
         const response = await getEmployees(1, 100)
         const mappedEmployees: Employee[] = response.employees.map(emp => ({
           id: String(emp.id),
-          name: emp.name,
+          name: `${emp.first_name} ${emp.last_name}`.trim() || 'Unknown',
           email: emp.email,
           phone: '',
           department: emp.department || 'Unassigned',
           position: emp.position || 'Employee',
-          joinDate: emp.joining_date || '',
+          joinDate: emp.date_of_joining || '',
           status: emp.status?.toLowerCase() as Employee['status'] || 'active',
           salary: 0,
         }))
@@ -47,6 +51,51 @@ export default function AdminEmployeesPage() {
     }
     fetchEmployees()
   }, [])
+
+  // Filter employees based on search and filters
+  const filteredEmployees = useMemo(() => {
+    return employees.filter(emp => {
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        const matchesSearch =
+          emp.name.toLowerCase().includes(query) ||
+          emp.email.toLowerCase().includes(query) ||
+          emp.department.toLowerCase().includes(query) ||
+          emp.position.toLowerCase().includes(query)
+        if (!matchesSearch) return false
+      }
+
+      // Department filter
+      if (activeFilters.department && activeFilters.department !== 'all') {
+        if (emp.department.toLowerCase() !== activeFilters.department.toLowerCase()) {
+          return false
+        }
+      }
+
+      // Status filter
+      if (activeFilters.status && activeFilters.status !== 'all') {
+        if (emp.status !== activeFilters.status) {
+          return false
+        }
+      }
+
+      return true
+    })
+  }, [employees, searchQuery, activeFilters])
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value)
+  }
+
+  const handleFilterChange = (key: string, value: string) => {
+    setActiveFilters(prev => ({ ...prev, [key]: value }))
+  }
+
+  const handleClearFilters = () => {
+    setSearchQuery("")
+    setActiveFilters({})
+  }
 
   const statusVariant = (status: Employee["status"]) => {
     switch (status) {
@@ -66,17 +115,16 @@ export default function AdminEmployeesPage() {
       cell: (row: Employee) => (
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10 ring-2 ring-border/50">
-            <AvatarImage src={row.avatar || "/placeholder.svg"} alt={row.name} />
+            <AvatarImage src={row.avatar || "/placeholder.svg"} alt={row.name || ''} />
             <AvatarFallback className="bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white">
               {row.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+                ? row.name.split(" ").map((n) => n[0]).join("")
+                : "??"}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-medium">{row.name}</p>
-            <p className="text-sm text-muted-foreground">{row.email}</p>
+            <p className="font-medium">{row.name || 'Unknown'}</p>
+            <p className="text-sm text-muted-foreground">{row.email || ''}</p>
           </div>
         </div>
       ),
@@ -84,17 +132,17 @@ export default function AdminEmployeesPage() {
     {
       key: "department",
       header: "Department",
-      cell: (row: Employee) => <span className="text-muted-foreground">{row.department}</span>,
+      cell: (row: Employee) => <span className="text-muted-foreground">{row.department || ''}</span>,
     },
     {
       key: "position",
       header: "Position",
-      cell: (row: Employee) => row.position,
+      cell: (row: Employee) => row.position || '',
     },
     {
       key: "joinDate",
       header: "Join Date",
-      cell: (row: Employee) => <span className="font-mono text-sm text-muted-foreground">{row.joinDate}</span>,
+      cell: (row: Employee) => <span className="font-mono text-sm text-muted-foreground">{row.joinDate || ''}</span>,
     },
     {
       key: "status",
@@ -168,7 +216,7 @@ export default function AdminEmployeesPage() {
         breadcrumbs={[{ label: "Admin Dashboard", href: "/admin/dashboard" }, { label: "Employees" }]}
         action={{
           label: "Add Employee",
-          onClick: () => toast.info("Add employee form would open here"),
+          onClick: () => setShowAddDialog(true),
           icon: <Plus className="mr-2 h-4 w-4" />,
         }}
       />
@@ -182,10 +230,16 @@ export default function AdminEmployeesPage() {
           <motion.div variants={staggerItem}>
             <SectionCard>
               <div className="space-y-4">
-                <TableFilters searchPlaceholder="Search employees..." filters={filters} />
+                <TableFilters
+                  searchPlaceholder="Search employees..."
+                  filters={filters}
+                  onSearchChange={handleSearchChange}
+                  onFilterChange={handleFilterChange}
+                  onClearFilters={handleClearFilters}
+                />
                 <DataTable
                   columns={columns}
-                  data={employees}
+                  data={filteredEmployees}
                   emptyTitle="No employees found"
                   emptyDescription="No employees match your current filters"
                 />
@@ -196,6 +250,33 @@ export default function AdminEmployeesPage() {
       )}
 
       <EmployeeDetailDialog open={showDetailDialog} onOpenChange={setShowDetailDialog} employee={selectedEmployee} />
+      <AddEmployeeDialog
+        open={showAddDialog}
+        onOpenChange={setShowAddDialog}
+        onSuccess={() => {
+          // Refresh employee list
+          async function refresh() {
+            try {
+              const response = await getEmployees(1, 100)
+              const mappedEmployees: Employee[] = response.employees.map(emp => ({
+                id: String(emp.id),
+                name: `${emp.first_name} ${emp.last_name}`.trim() || 'Unknown',
+                email: emp.email,
+                phone: '',
+                department: emp.department || 'Unassigned',
+                position: emp.position || 'Employee',
+                joinDate: emp.date_of_joining || '',
+                status: emp.status?.toLowerCase() as Employee['status'] || 'active',
+                salary: 0,
+              }))
+              setEmployees(mappedEmployees)
+            } catch (error) {
+              console.error('Failed to refresh employees:', error)
+            }
+          }
+          refresh()
+        }}
+      />
     </div>
   )
 }

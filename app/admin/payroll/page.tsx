@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect, useMemo } from "react"
 import { motion } from "framer-motion"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
@@ -12,16 +12,20 @@ import { SalaryEditDialog } from "@/components/dialogs/salary-edit-dialog"
 import { StatusBadge } from "@/components/ui/status-badge"
 import { StatCard } from "@/components/ui/stat-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { employees } from "@/lib/mock-data"
-import { DollarSign, Users, TrendingUp, Edit, Download, Shield } from "lucide-react"
+import { DollarSign, Users, TrendingUp, Edit, Download, Shield, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import { useScrollAnimation, payrollAnimationOptions } from "@/lib/motion/index"
 import type { Employee } from "@/lib/types"
+import { getEmployees } from "@/lib/api"
 
 export default function AdminPayrollPage() {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
   const [showSalaryDialog, setShowSalaryDialog] = useState(false)
+  const [employees, setEmployees] = useState<Employee[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [activeFilters, setActiveFilters] = useState<Record<string, string>>({})
   
   // Refs for animations
   const pageHeaderRef = useRef<HTMLDivElement>(null)
@@ -31,8 +35,72 @@ export default function AdminPayrollPage() {
   useScrollAnimation(pageHeaderRef, payrollAnimationOptions.pageHeader)
   useScrollAnimation(noteBoxRef, payrollAnimationOptions.noteBox)
 
+  useEffect(() => {
+    async function fetchEmployees() {
+      try {
+        const response = await getEmployees(1, 100)
+        const mappedEmployees: Employee[] = response.employees.map(emp => ({
+          id: String(emp.id),
+          name: emp.name,
+          email: emp.email,
+          phone: '',
+          department: emp.department || 'Unassigned',
+          position: emp.position || 'Employee',
+          joinDate: emp.joining_date || '',
+          status: emp.status?.toLowerCase() as Employee['status'] || 'active',
+          salary: 0, // Salary would need to be fetched from payroll API
+        }))
+        setEmployees(mappedEmployees)
+      } catch (error) {
+        console.error('Failed to fetch employees:', error)
+        toast.error('Failed to load employees')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchEmployees()
+  }, [])
+
+  // Filter employees based on search and filters
+  const filteredEmployees = useMemo(() => {
+    return employees.filter(emp => {
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        const matchesSearch = 
+          emp.name.toLowerCase().includes(query) ||
+          emp.email.toLowerCase().includes(query) ||
+          emp.department.toLowerCase().includes(query) ||
+          emp.position.toLowerCase().includes(query)
+        if (!matchesSearch) return false
+      }
+
+      // Department filter
+      if (activeFilters.department && activeFilters.department !== 'all') {
+        if (emp.department.toLowerCase() !== activeFilters.department.toLowerCase()) {
+          return false
+        }
+      }
+
+      return true
+    })
+  }, [employees, searchQuery, activeFilters])
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value)
+  }
+
+  const handleFilterChange = (key: string, value: string) => {
+    setActiveFilters(prev => ({ ...prev, [key]: value }))
+  }
+
+  const handleClearFilters = () => {
+    setSearchQuery("")
+    setActiveFilters({})
+  }
+
   const totalPayroll = employees.reduce((sum, e) => sum + (e.salary || 0), 0)
-  const avgSalary = Math.round(totalPayroll / employees.length)
+  const avgSalary = employees.length > 0 ? Math.round(totalPayroll / employees.length) : 0
 
   const handleSaveSalary = (newSalary: number) => {
     toast.success(`Salary updated to $${newSalary.toLocaleString()}`)
@@ -45,17 +113,16 @@ export default function AdminPayrollPage() {
       cell: (row: Employee) => (
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10 ring-2 ring-border/50">
-            <AvatarImage src={row.avatar || "/placeholder.svg"} alt={row.name} />
+            <AvatarImage src={row.avatar || "/placeholder.svg"} alt={row.name || ''} />
             <AvatarFallback className="bg-gradient-to-br from-[hsl(174_70%_17%)] to-[hsl(168_76%_40%)] text-xs font-semibold text-white">
               {row.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+                ? row.name.split(" ").map((n) => n[0]).join("")
+                : "??"}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-medium">{row.name}</p>
-            <p className="text-sm text-muted-foreground">{row.position}</p>
+            <p className="font-medium">{row.name || 'Unknown'}</p>
+            <p className="text-sm text-muted-foreground">{row.position || ''}</p>
           </div>
         </div>
       ),
@@ -63,7 +130,7 @@ export default function AdminPayrollPage() {
     {
       key: "department",
       header: "Department",
-      cell: (row: Employee) => <span className="text-muted-foreground">{row.department}</span>,
+      cell: (row: Employee) => <span className="text-muted-foreground">{row.department || ''}</span>,
     },
     {
       key: "salary",
@@ -127,6 +194,23 @@ export default function AdminPayrollPage() {
     },
   ]
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <div ref={pageHeaderRef} className="payroll-page-header">
+          <PageHeader
+            title="Payroll Management"
+            subtitle="Manage employee salaries and compensation"
+            breadcrumbs={[{ label: "Admin Dashboard", href: "/admin/dashboard" }, { label: "Payroll" }]}
+          />
+        </div>
+        <div className="flex min-h-[400px] items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen">
       <div ref={pageHeaderRef} className="payroll-page-header">
@@ -177,10 +261,16 @@ export default function AdminPayrollPage() {
         <motion.div variants={staggerItem}>
           <SectionCard title="Employee Compensation" delay={0.3}>
             <div className="space-y-4">
-              <TableFilters searchPlaceholder="Search employees..." filters={filters} />
+              <TableFilters 
+                searchPlaceholder="Search employees..." 
+                filters={filters}
+                onSearchChange={handleSearchChange}
+                onFilterChange={handleFilterChange}
+                onClearFilters={handleClearFilters}
+              />
               <DataTable
                 columns={columns}
-                data={employees}
+                data={filteredEmployees}
                 emptyTitle="No employees found"
                 emptyDescription="No employees match your search criteria"
               />

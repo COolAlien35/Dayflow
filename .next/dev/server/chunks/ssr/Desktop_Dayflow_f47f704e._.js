@@ -186,6 +186,8 @@ function Checkbox({ className, ...props }) {
     ()=>checkOut,
     "clearToken",
     ()=>clearToken,
+    "createEmployee",
+    ()=>createEmployee,
     "createLeaveRequest",
     ()=>createLeaveRequest,
     "getAdminDashboard",
@@ -383,6 +385,12 @@ async function getEmployees(page = 1, pageSize = 10, department) {
 }
 async function getEmployee(employeeId) {
     return apiFetch(`/api/employees/${employeeId}`);
+}
+async function createEmployee(data) {
+    return apiFetch('/api/employees', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
 }
 async function getMyPayroll() {
     return apiFetch('/api/payroll/me');

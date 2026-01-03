@@ -207,6 +207,26 @@ class AdminProfileUpdate(BaseModel):
     emergency_contact: Optional[str] = None
 
 
+class EmployeeCreate(BaseModel):
+    """Request model for creating a new employee."""
+    email: EmailStr
+    password: str = Field(..., min_length=8)
+    first_name: str = Field(..., min_length=1)
+    last_name: str = Field(..., min_length=1)
+    department: Optional[str] = None
+    position: Optional[str] = None
+    employee_id: Optional[str] = None
+    phone: Optional[str] = None
+    date_of_joining: Optional[date] = None
+
+
+class EmployeeCreateResponse(BaseModel):
+    """Response model for employee creation."""
+    user: UserResponse
+    profile: ProfileResponse
+    message: str
+
+
 # Payroll Schemas
 class PayrollResponse(BaseModel):
     """Response model for payroll data."""

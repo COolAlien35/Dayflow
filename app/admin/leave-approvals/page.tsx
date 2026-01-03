@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useMemo } from "react"
 import { PageHeader } from "@/components/layout/page-header"
 import { SectionCard } from "@/components/layout/section-card"
 import { DataTable } from "@/components/data-table/data-table"
@@ -23,6 +23,8 @@ export default function AdminLeaveApprovalsPage() {
   const [showApprovalDialog, setShowApprovalDialog] = useState(false)
   const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [activeFilters, setActiveFilters] = useState<Record<string, string>>({})
 
   // Refs for animations
   const tableRef = useRef<HTMLDivElement>(null)
@@ -59,8 +61,45 @@ export default function AdminLeaveApprovalsPage() {
   const approvedRequests = leaveRequests.filter((r) => r.status === "approved")
   const rejectedRequests = leaveRequests.filter((r) => r.status === "rejected")
 
-  const filteredRequests =
+  const tabFilteredRequests =
     activeTab === "pending" ? pendingRequests : activeTab === "approved" ? approvedRequests : rejectedRequests
+
+  // Apply search and filter to tab-filtered requests
+  const filteredRequests = useMemo(() => {
+    return tabFilteredRequests.filter(req => {
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        const matchesSearch = 
+          req.employeeName.toLowerCase().includes(query) ||
+          req.type.toLowerCase().includes(query) ||
+          (req.remarks && req.remarks.toLowerCase().includes(query))
+        if (!matchesSearch) return false
+      }
+
+      // Type filter
+      if (activeFilters.type && activeFilters.type !== 'all') {
+        if (req.type !== activeFilters.type) {
+          return false
+        }
+      }
+
+      return true
+    })
+  }, [tabFilteredRequests, searchQuery, activeFilters])
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value)
+  }
+
+  const handleFilterChange = (key: string, value: string) => {
+    setActiveFilters(prev => ({ ...prev, [key]: value }))
+  }
+
+  const handleClearFilters = () => {
+    setSearchQuery("")
+    setActiveFilters({})
+  }
 
   const statusVariant = (status: LeaveRequest["status"]) => {
     switch (status) {
@@ -233,7 +272,13 @@ export default function AdminLeaveApprovalsPage() {
             className="mb-6"
           />
           <div className="space-y-4">
-            <TableFilters searchPlaceholder="Search by employee name..." filters={filters} />
+            <TableFilters 
+              searchPlaceholder="Search by employee name..." 
+              filters={filters}
+              onSearchChange={handleSearchChange}
+              onFilterChange={handleFilterChange}
+              onClearFilters={handleClearFilters}
+            />
             <div ref={tableRef} className="leave-approval-table">
               <DataTable
                 columns={columns}

@@ -53,7 +53,7 @@ async function apiFetch<T>(
 
     if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        
+
         // Handle 401 - clear token and redirect to login
         if (response.status === 401) {
             clearToken();
@@ -61,7 +61,7 @@ async function apiFetch<T>(
                 window.location.href = '/auth/login';
             }
         }
-        
+
         throw new APIError(
             errorData.message || errorData.detail || `API Error: ${response.status}`,
             response.status,
@@ -74,7 +74,7 @@ async function apiFetch<T>(
     if (!text) {
         return {} as T;
     }
-    
+
     return JSON.parse(text);
 }
 
@@ -382,13 +382,15 @@ export async function getAdminDashboard(): Promise<AdminDashboard> {
 export interface Employee {
     id: number;
     user_id: number;
-    name: string;
+    first_name: string;
+    last_name: string;
     email: string;
-    employee_id: string;
-    department: string;
-    position: string;
+    employee_id: string | null;
+    department: string | null;
+    position: string | null;
     status: string;
-    joining_date: string;
+    date_of_joining: string | null;
+    role: string;
 }
 
 export interface EmployeeListResponse {
@@ -414,6 +416,51 @@ export async function getEmployees(
 
 export async function getEmployee(employeeId: number): Promise<Employee> {
     return apiFetch<Employee>(`/api/employees/${employeeId}`);
+}
+
+export interface CreateEmployeeRequest {
+    email: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+    department?: string;
+    position?: string;
+    employee_id?: string;
+    phone?: string;
+    date_of_joining?: string;
+}
+
+export interface CreateEmployeeResponse {
+    user: {
+        id: number;
+        email: string;
+        role: string;
+        created_at: string;
+        updated_at: string;
+    };
+    profile: {
+        id: number;
+        user_id: number;
+        employee_id: string | null;
+        first_name: string;
+        last_name: string;
+        phone: string | null;
+        address: string | null;
+        department: string | null;
+        position: string | null;
+        date_of_joining: string | null;
+        emergency_contact: string | null;
+    };
+    message: string;
+}
+
+export async function createEmployee(
+    data: CreateEmployeeRequest
+): Promise<CreateEmployeeResponse> {
+    return apiFetch<CreateEmployeeResponse>('/api/employees', {
+        method: 'POST',
+        body: JSON.stringify(data),
+    });
 }
 
 // ============ PAYROLL ENDPOINTS ============

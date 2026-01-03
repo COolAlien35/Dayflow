@@ -15,6 +15,7 @@ from api.schemas import (
     SignupRequest, SignupResponse, LoginRequest, TokenResponse,
     ProfileMeResponse, ProfileResponse, UserResponse, ProfileUpdate, ProfileUpdateResponse,
     EmployeeListItem, EmployeeListResponse, EmployeeDetailResponse, AdminProfileUpdate,
+    EmployeeCreate, EmployeeCreateResponse,
     CheckInResponse, CheckOutResponse, AttendanceRecord, AttendanceHistoryResponse,
     LeaveRequestCreate, LeaveRequestCreateResponse, LeaveRequestResponse, 
     LeaveRequestListResponse, LeaveRequestWithEmployee, LeaveRequestAllResponse,
@@ -514,6 +515,94 @@ def get_employees(
         total=total,
         page=page,
         page_size=page_size
+    )
+
+
+@app.post("/api/employees", response_model=EmployeeCreateResponse, status_code=status.HTTP_201_CREATED)
+def create_employee(
+    request: EmployeeCreate,
+    current_user: dict = Depends(require_role(["Admin"])),
+    db: Session = Depends(get_db)
+):
+    """
+    Create a new employee (Admin only).
+    
+    Creates a new user account with Employee role and associated profile.
+    Validates email uniqueness and password strength.
+    """
+    # Validate password meets security requirements
+    is_valid, error_message = validate_password(request.password)
+    if not is_valid:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=error_message
+        )
+    
+    # Check for duplicate email
+    existing_user = db.query(User).filter(User.email == request.email).first()
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Email already registered"
+        )
+    
+    # Hash password
+    password_hash = hash_password(request.password)
+    
+    # Create user record with Employee role
+    new_user = User(
+        email=request.email,
+        password_hash=password_hash,
+        role="Employee"
+    )
+    
+    try:
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+        
+        # Create profile with provided information
+        new_profile = Profile(
+            user_id=new_user.id,
+            first_name=request.first_name,
+            last_name=request.last_name,
+            employee_id=request.employee_id,
+            department=request.department,
+            position=request.position,
+            phone=request.phone,
+            date_of_joining=request.date_of_joining or date.today()
+        )
+        db.add(new_profile)
+        db.commit()
+        db.refresh(new_profile)
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Failed to create employee. Email or employee ID may already exist."
+        )
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to create employee"
+        )
+    
+    # Build response
+    user_response = UserResponse(
+        id=new_user.id,
+        email=new_user.email,
+        role=new_user.role,
+        created_at=new_user.created_at.isoformat(),
+        updated_at=new_user.updated_at.isoformat()
+    )
+    
+    profile_response = ProfileResponse.model_validate(new_profile)
+    
+    return EmployeeCreateResponse(
+        user=user_response,
+        profile=profile_response,
+        message="Employee created successfully"
     )
 
 
