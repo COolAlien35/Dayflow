@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/attendance/page": "app/admin/attendance/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/employees/page": "app/admin/employees/page.js",
+  "/admin/leave-approvals/page": "app/admin/leave-approvals/page.js",
+  "/admin/payroll/page": "app/admin/payroll/page.js",
+  "/admin/settings/page": "app/admin/settings/page.js",
+  "/auth/login/page": "app/auth/login/page.js",
+  "/auth/signup/page": "app/auth/signup/page.js",
+  "/employee/attendance/page": "app/employee/attendance/page.js",
+  "/employee/dashboard/page": "app/employee/dashboard/page.js",
+  "/employee/leave/page": "app/employee/leave/page.js",
+  "/employee/payroll/page": "app/employee/payroll/page.js",
+  "/employee/profile/page": "app/employee/profile/page.js",
+  "/page": "app/page.js",
+  "/shared/notifications/page": "app/shared/notifications/page.js",
+  "/shared/settings/page": "app/shared/settings/page.js"
+}

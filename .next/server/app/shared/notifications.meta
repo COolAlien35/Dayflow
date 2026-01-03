@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/shared/layout,_N_T_/shared/notifications/layout,_N_T_/shared/notifications/page,_N_T_/shared/notifications"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/shared/notifications/__PAGE__",
+    "/shared/notifications",
+    "/shared",
+    "/_index",
+    "/_head"
+  ]
+}

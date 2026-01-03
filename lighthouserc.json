@@ -1,0 +1,40 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "startServerCommand": "npm run build && npm run start",
+      "url": [
+        "http://localhost:3000/auth/login",
+        "http://localhost:3000/employee/dashboard",
+        "http://localhost:3000/employee/profile",
+        "http://localhost:3000/employee/attendance",
+        "http://localhost:3000/employee/leave",
+        "http://localhost:3000/admin/dashboard",
+        "http://localhost:3000/landing-example"
+      ],
+      "settings": {
+        "preset": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "cpuSlowdownMultiplier": 1
+        }
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", {"minScore": 0.8}],
+        "categories:accessibility": ["error", {"minScore": 0.9}],
+        "first-contentful-paint": ["error", {"maxNumericValue": 2000}],
+        "interactive": ["error", {"maxNumericValue": 3500}],
+        "speed-index": ["error", {"maxNumericValue": 3000}],
+        "total-blocking-time": ["error", {"maxNumericValue": 300}],
+        "cumulative-layout-shift": ["error", {"maxNumericValue": 0.1}],
+        "max-potential-fid": ["error", {"maxNumericValue": 130}]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

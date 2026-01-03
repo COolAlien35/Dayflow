@@ -1,0 +1,3 @@
+module.exports=[94306,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(94382);a.n(d("[project]/Desktop/Dayflow/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},59407,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(94382);a.n(d("[project]/Desktop/Dayflow/node_modules/next/dist/client/components/builtin/global-error.js"))},77711,a=>{"use strict";a.i(94306);var b=a.i(59407);a.n(b)}];
+
+//# sourceMappingURL=a6d50_next_dist_client_components_builtin_global-error_07c96583.js.map

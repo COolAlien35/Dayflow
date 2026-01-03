@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/attendance/page": "/admin/attendance",
+  "/admin/dashboard/page": "/admin/dashboard",
+  "/admin/employees/page": "/admin/employees",
+  "/admin/leave-approvals/page": "/admin/leave-approvals",
+  "/admin/payroll/page": "/admin/payroll",
+  "/admin/settings/page": "/admin/settings",
+  "/auth/login/page": "/auth/login",
+  "/auth/signup/page": "/auth/signup",
+  "/employee/attendance/page": "/employee/attendance",
+  "/employee/dashboard/page": "/employee/dashboard",
+  "/employee/leave/page": "/employee/leave",
+  "/employee/payroll/page": "/employee/payroll",
+  "/employee/profile/page": "/employee/profile",
+  "/page": "/",
+  "/shared/notifications/page": "/shared/notifications",
+  "/shared/settings/page": "/shared/settings"
+}
